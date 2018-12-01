@@ -1,0 +1,291 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+body{
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    --yellow: #E5A903; 
+    --blue: #0083B1; 
+    --cinza: #666666;
+    background-color: black
+}
+
+main{
+    height: 800px;
+    width: 480px;
+    background-color: whitesmoke;
+}
+
+
+div.bg-page{
+    background-repeat: no-repeat;
+    
+    background-image: url('images/background3.png');
+    background-size: cover;
+    height: 800px;
+    width: 480px;
+    filter: blur(8px);
+    position: absolute;
+    z-index: -1;
+}
+
+.header{
+    height: 130px;
+    width: 480px;
+
+
+    display: flex;
+    justify-content: center;
+
+    align-items: center;
+}
+
+.logo-header{
+    height: 60px;
+}
+
+.standby{
+    height: 800px;
+    width: 480px;
+
+    background-color: black;
+
+    display: flex;
+    justify-content: center;
+
+    align-items: center;
+}
+
+.logo-standby{
+    height: 130px;
+    transform: rotate(305deg);
+}
+
+.lower-text{
+    color: white;
+    position: absolute;
+    bottom: 20px;
+    
+    width: 480px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.corpo{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    flex-wrap: wrap;
+}
+
+div.card{
+    height: 275px;
+    width: 400px;
+    background-color: white;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+div.home-combo-buttons{
+    width: 400px;
+    height: 395px;
+    display: flex;
+  
+    flex-direction: column;
+}
+
+div.left{
+    width: 480px;
+    display: flex;
+    justify-content: left;
+}
+
+div.text-combo-buttons{
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px; 
+}
+
+div.combo-buttons{
+    width: 400px;
+    min-height: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+
+    justify-content: center;
+}
+
+
+img.card{
+    width: 120px;
+}
+
+h2.card{
+    font-size: 35px;
+    font-weight: 300;
+    margin: 15px;
+}
+
+p.card{
+    margin:15px;
+    font-size: 23px;
+    justify-content: left;
+    color: var(--cinza);
+}
+
+div.card-text{
+    width: 250px;
+  
+}
+
+div.card-img{
+    width: 150px;
+ 
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+button.btn-yellow{
+    background-color: var(--yellow);
+}
+
+button.btn{
+    border-radius: 15px;
+    min-height: 20px;
+    margin:10px;
+    border:none;
+    color: white;
+    font-weight: 600;
+    min-width: 100px;
+}
+
+button.btn-large{
+    height: 100px;
+    width: 280px;
+    font-size: 25px;
+    
+}
+
+button.btn-menu{
+    height: 80px;
+   width: 240px;
+   margin: 25px;
+   font-size: 25px;
+}
+
+
+button.btn-aux{
+    height: 30px;
+    width: 125px;
+    font-size: 13px;
+  
+    background-color: var(--blue);
+}
+
+p.lower-text{
+    font-size: 26px;
+
+}
+
+p{
+    font-size: 26px;
+    margin:32px;
+}
+
+div.column{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+div.row{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 480px;
+}
+
+
+p.italic{
+    font-style: italic;
+}
+
+div.sub-title{
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+p.sub-title{
+    margin: 20px;
+    font-size: 17px;
+    color: var(--cinza);
+    width: 480px;
+    margin-bottom: 5px;
+}
+
+h2.sub-title{
+    font-size: 37px;
+    font-weight: 300;
+    margin: 20px;
+    margin-top: 0px;
+}
+
+
+.input-form{
+    height: 70px;
+    width: 410px;
+    margin:auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-size: 18px;
+    padding-left: 15px;
+}
+
+fieldset{
+    display: flex;
+    justify-content: center;
+    width: 480px;
+    padding: 0px;
+}
+
+.btn-round{
+    height: 46px;
+    width: 46px;
+    background-color: var(--blue);
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+    border-radius: 23px;
+    border:none;
+    margin-left: 400px;
+}
+
+.btn-form{
+    margin-left: 100px;
+}
+
+div.back{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    width: 480px;
+    height: 110px ;
+    position: absolute;
+    bottom: 0px;
+}
+
+div.content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
