@@ -92,18 +92,14 @@ app.get('/guardar', (req, res) =>{
 
 app.get('/guardado', (req, res) =>{
   res.sendFile(path.join(__dirname + '/../public/lockerFechadoGuardar.html'))
-  Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 5000);
-  res.sendFile(path.join(__dirname + '/../public/home.html'))
 });
 
 app.get('/retirar', (req, res) =>{
-  res.sendFile(path.join(__dirname + '/../public/lockerFechadoRetirar.html'))
+  res.sendFile(path.join(__dirname + '/../public/lockerAbertoRetirar.html'))
 });
 
 app.get('/retirado', (req, res) =>{
-  res.sendFile(path.join(__dirname + '/../public/lockerFechadoRetidado.html'))
-  Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 5000);
-  res.sendFile(path.join(__dirname + '/../public/home.html'))
+  res.sendFile(path.join(__dirname + '/../public/lockerFechadoRetirar.html'))
 
 });
 
@@ -111,22 +107,31 @@ app.get('/sair', (req, res) =>{
   res.sendFile(path.join(__dirname + '/../public/home.html'))
 });
 
+app.get('/logoff', (req, res) =>{ 
+  Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 5000);
+  res.sendFile(path.join(__dirname + '/../public/home.html'))
+});
+
+
 app.get('/suporte', (req, res) =>{
   res.sendFile(path.join(__dirname + '/../public/suporte.html'))
 });
 
 
 //-------------------------------
-
+const digitalLida = False;
 app.post('/digital', (req, res) =>{
   console.log("Chamou a rota no node");
-  console.log(path.join(__dirname + '/../public/scripts/script.py'));
+  console.log(path.join(__dirname + '/../public/scripts/digital.py'));
   
 
-  PythonShell.PythonShell.run(path.join(__dirname + '/../public/scripts/script.py'), null, function (err, results) {
+  PythonShell.PythonShell.run(path.join(__dirname + '/../public/scripts/digital.py'), null, function (err, results) {
     if (err) throw err;
     console.log('finished');
-    console.log(results);
+    if (result[0][1] > 100){
+	digitalLida = True;
+
+    }
   });
 
 

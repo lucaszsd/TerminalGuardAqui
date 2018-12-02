@@ -5,6 +5,11 @@
 import hashlib, sys
 from pyfingerprint.pyfingerprint import PyFingerprint
 
+
+
+#print("FOI")
+#sys.stdout.flush()
+
 ## Tenta inicializar o sensor
 try:
     f = PyFingerprint('/dev/ttyUSB0', 57600, 0xFFFFFFFF, 0x00000000)
@@ -15,7 +20,9 @@ try:
 
 except Exception as e:
     print('O sensor não foi inicializado!')
+    sys.stdout.flush()
     print('Menssagem de exceção: ' + str(e))
+    sys.stdout.flush()
     exit(1)
 
 ## Talvez mandar mensagem de aguardando digital pro node
@@ -30,13 +37,14 @@ f.convertImage(0x01)
 ## Procurar por template 
 result = f.searchTemplate() 
 positionNumber = result[0]
+#print(result)
 ##accuracyScore = result[1] ##Talvez usar acurácia como referência de uma digital bem lida
 
 ## Digital não cadastrada
 if ( positionNumber == -1 ): 
 	
 	## Enviar mensagem de não encontrada pro node
-	msg = -1
+	msg = (-1,-1)
 	print(msg)
 	sys.stdout.flush()
 	
@@ -53,5 +61,7 @@ else:
 	sha2 = hashlib.sha256(characterics).hexdigest() 
 	
 	## Enviar chave sha-2 do template para o node
-	print(sha2)
+	#print(sha2)
+	#sys.stdout.flush()
+	print(result)
 	sys.stdout.flush()
