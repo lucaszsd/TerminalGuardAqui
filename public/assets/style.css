@@ -1,18 +1,38 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Roboto:700,600,500,400,300,200,100');
 
 body{
     margin: 0;
-    font-family: 'Roboto', sans-serif;
+    font-family: Roboto, sans-serif;
     --yellow: #E5A903; 
+    --yellow-claro: #E8C445; 
     --blue: #0083B1; 
     --cinza: #666666;
+    --cinza-claro: #E6E6E6;
     background-color: black
 }
 
 main{
     height: 800px;
     width: 480px;
-    background-color: whitesmoke;
+}
+
+main#menu{
+    background-color: white;
+}
+
+main#lockerAbertoRetirar{
+    background-color: var(--blue);
+    color: white;
+}
+
+
+main#lockerAbertoGuardar{
+    background-color: var(--yellow-claro);
+    color: white;
+}
+
+main#concluirCadastro{
+    background-color: white;
 }
 
 
@@ -71,6 +91,54 @@ div.bg-page{
 
 }
 
+div.locker-number{
+    width: 480px;
+    display: flex;
+    justify-content: right;
+    position: relative;
+}
+
+p.locker-number{
+    font-size: 400px;
+    font-weight: 300;
+    margin: 0;
+    
+}
+
+p.blue{
+    color: var(--blue);
+}
+
+
+p.yellow{
+    color: var(--yellow);
+}
+
+
+p.yellow-claro{
+    color: var(--yellow-claro);
+}
+
+p.light-grey{
+    color: var(--cinza-claro);
+}
+
+p.name{
+    margin: 20px;
+    font-size: 20px;
+    color: var(--cinza-claro);
+    width: 480px;
+    margin-bottom: 5px; 
+    font-weight: 400;
+}
+
+h2.info-locker{
+    font-size: 40px;
+    font-weight: 400;
+    margin: 20px;
+    margin-top: 0px;
+}
+
 .corpo{
     display: flex;
     justify-content: center;
@@ -85,6 +153,24 @@ div.card{
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+}
+
+div.msg{
+    width: 480px;
+    justify-content: left;
+    display: flex;
+    padding-left: 20px;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+p.msg{
+    margin: 22px;
+    font-size: 15px;
+    width: 480px;
+    margin-bottom: 5px; 
+    font-weight: 400;
+    margin: 0px;
 }
 
 div.home-combo-buttons{
@@ -175,7 +261,7 @@ button.btn-menu{
     height: 80px;
    width: 240px;
    margin: 25px;
-   font-size: 25px;
+   font-size: 28px;
 }
 
 
@@ -220,21 +306,35 @@ div.sub-title{
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    margin-left: 40px;
 }
 
 p.sub-title{
     margin: 20px;
-    font-size: 17px;
+    font-size: 20px;
     color: var(--cinza);
     width: 480px;
     margin-bottom: 5px;
+    margin-left: 20px;
+}
+
+div.button-left{
+    width: 480px;
+    display: flex;
+    justify-content: left;
+}
+
+::placeholder { 
+    color: black;
+    opacity: 1; /* Firefox */
 }
 
 h2.sub-title{
-    font-size: 37px;
-    font-weight: 300;
+    font-size: 45px;
+    font-weight: 400;
     margin: 20px;
     margin-top: 0px;
+    margin-left: 20px;
 }
 
 
@@ -255,6 +355,7 @@ fieldset{
     justify-content: center;
     width: 480px;
     padding: 0px;
+    border: none;
 }
 
 .btn-round{
@@ -269,8 +370,13 @@ fieldset{
     margin-left: 400px;
 }
 
-.btn-form{
-    margin-left: 100px;
+button.btn-deactivate{
+    background-color: white;
+    color: var(--cinza)
+}
+
+button.btn-form{
+    margin-left: 30px;
 }
 
 div.back{
@@ -279,13 +385,26 @@ div.back{
     align-items: center;
     width: 480px;
     height: 110px ;
-    position: absolute;
+  
     bottom: 0px;
 }
+
+
 
 div.content{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+
+}
+
+@keyframes example {
+    25% { width: 450}
+    80$ {450: yellow;}
 }

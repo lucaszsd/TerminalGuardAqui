@@ -38,6 +38,34 @@ $('document').ready(() =>{
         window.location = "/ajuda";
     });
 
+
+    //========= lockerAberto ===========================
+    
+    $('#btn-footer-lockerAberto').click(function(){
+        window.location = "/home";
+    });
+
+     //========= concluirCadastro ===========================
+    
+     
+    $('#alo').click(function(){
+        window.location = "/home";
+    });
+
+    $('#btn-concluirCadastro-voltar').click(function(){
+        window.location = "/home";
+    });
+
+
+     //========= concluirCadastro ===========================
+    
+
+     $('#btn-concluindoCadastro-continuar').click(function(){
+        window.location = "/home";
+    });
+
+
+
     //========= Menu ===========================
     
     $('#btn-menu-guardar').click(function(){
@@ -55,4 +83,30 @@ $('document').ready(() =>{
     $('#btn-menu-suporte').click(function(){
         window.location = "/suporte";
     });
+
+    
+    
+    //========= Suporte ===========================
+    
+    $('#btn-suporte-voltar').click(function(){
+        window.location = "/home";
+    });
+
+     //========= ajuda ===========================
+    
+     $('#btn-ajuda-voltar').click(function(){
+        window.location = "/home";
+    });
+
+      //========= lockerAbertoGuardar ===========================
+      $('#btn-footer-guardar').click(function(){
+        window.location = "/guardado";
+    });
+
+
+     //========= lockerAbertoGuardado ===========================
+     $('#btn-footer-retirar').click(function(){
+        window.location = "/retirado";
+    });
+
 });

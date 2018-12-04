@@ -5,6 +5,7 @@ const Promise = require('bluebird');
 const log = require('./logger.js');
 const express = require('express');
 const path = require('path');
+const PythonShell = require('python-shell');
 const app = express();
 
 
@@ -80,104 +81,62 @@ app.get('/saibaMais', (req, res) =>{
 });
 
 app.get('/ajuda', (req, res) =>{
-  res.sendFile(path.join(__dirname + '/../public/instrucoes.html'))
+  res.sendFile(path.join(__dirname + '/../public/ajuda.html'))
 });
 
 //==== Menu ========================================================
 
 app.get('/guardar', (req, res) =>{
-  res.sendFile(path.join(__dirname + '/../public/lockerAberto.html'))
+  res.sendFile(path.join(__dirname + '/../public/lockerAbertoGuardar.html'))
+});
+
+app.get('/guardado', (req, res) =>{
+  res.sendFile(path.join(__dirname + '/../public/lockerFechadoGuardar.html'))
 });
 
 app.get('/retirar', (req, res) =>{
-  res.sendFile(path.join(__dirname + '/../public/lockerFechado.html'))
+  res.sendFile(path.join(__dirname + '/../public/lockerAbertoRetirar.html'))
+});
+
+app.get('/retirado', (req, res) =>{
+  res.sendFile(path.join(__dirname + '/../public/lockerFechadoRetirar.html'))
+
 });
 
 app.get('/sair', (req, res) =>{
   res.sendFile(path.join(__dirname + '/../public/home.html'))
 });
 
+app.get('/logoff', (req, res) =>{ 
+  Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 5000);
+  res.sendFile(path.join(__dirname + '/../public/home.html'))
+});
+
+
 app.get('/suporte', (req, res) =>{
   res.sendFile(path.join(__dirname + '/../public/suporte.html'))
 });
 
-function teste() { 
-  var myPythonScriptPath = path.join(__dirname + '/../public/scripts/script.py');
-
-  // Use python shell
-  var {PythonShell} = require('python-shell');
-  var pyshell = new PythonShell(myPythonScriptPath);
-
-  pyshell.on('message', function (message) {
-      // received a message sent from the Python script (a simple "print" statement)
-      console.log(message);
-  });
-
-  // end the input stream and allow the process to exit
-  pyshell.end(function (err) {
-      if (err){
-          throw err;
-      };
-
-      console.log('finished');
-  });
-
-} 
-
-teste();
-
-
 
 //-------------------------------
-
+const digitalLida = False;
 app.post('/digital', (req, res) =>{
   console.log("Chamou a rota no node");
-  console.log(path.join(__dirname + '/../public/scripts/digital_cadastro.py'));
+  console.log(path.join(__dirname + '/../public/scripts/digital.py'));
   
 
-  const { spawn } = require('child_process');
-  const ls = spawn(path.join(__dirname + '/../public/scripts/hello.py'), ['hello', 'world']);
-  
-  
+  PythonShell.PythonShell.run(path.join(__dirname + '/../public/scripts/digital.py'), null, function (err, results) {
+    if (err) throw err;
+    console.log('finished');
+    if (result[0][1] > 100){
+	digitalLida = True;
+
+    }
+  });
+
 
   console.log("Chamou o script python");
 
 });
 
 
-
-
-//--------------------
-
-
-// ex. using 'node-fetch' to call JSON REST API
-/*
-const fetch = require('node-fetch');
-// for all options see https://github.com/bitinn/node-fetch#options
-const url = 'https://api.github.com/users/cktang88/repos';
-const options = {
-  method: 'GET',
-  headers: {
-    // spoof user-agent
-    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'
-  }
-};
-
-fetch(url, options)
-  .then(res => {
-    // meta
-    console.log(res.ok);
-    console.log(res.status);
-    console.log(res.statusText);
-    console.log(res.headers.raw());
-    console.log(res.headers.get('content-type'));
-    return res.json();
-  })
-  .then(json => {
-    console.log(`User has ${json.length} repos`);
-  })
-  .catch(err => {
-    // API call failed...
-    log.error(err);
-  });
-*/

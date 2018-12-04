@@ -5,6 +5,8 @@
 import time
 from pyfingerprint.pyfingerprint import PyFingerprint
 
+print('está rodando script python')
+
 ## Tenta inicializar o sensor
 try:
     f = PyFingerprint('/dev/ttyUSB0', 57600, 0xFFFFFFFF, 0x00000000)
