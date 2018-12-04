@@ -61,7 +61,6 @@ $('document').ready(() =>{
     
 
     $('#btn-concluindoCadastro-voltar').click(function(){
-        alert();
         window.location = "/concluirCadastro";
     });
 
