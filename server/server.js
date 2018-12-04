@@ -126,9 +126,7 @@ app.get('/digital', (req, res) =>{
 //-------------------------------
 const digitalLida = false;
 app.post('/buscaDigital', (req, res) =>{
-  console.log("Chamou a rota no node");
   console.log(path.join(__dirname + '/../public/scripts/digital.py'));
-  
 
   PythonShell.PythonShell.run(path.join(__dirname + '/../public/scripts/digital.py'), null, function (err, results) {
     if (err) throw err;
@@ -139,9 +137,21 @@ app.post('/buscaDigital', (req, res) =>{
     }
   });
 
-
-  console.log("Chamou o script python");
-
 });
 
 
+//-------------------------------
+const digitalLida = false;
+app.post('/cadastraDigital', (req, res) =>{
+  console.log(path.join(__dirname + '/../public/scripts/digital_cadastro.py'));
+  
+  PythonShell.PythonShell.run(path.join(__dirname + '/../public/scripts/digital_cadastro.py'), null, function (err, results) {
+    if (err) throw err;
+    console.log('finished');
+    if (result[0][1] > 100){
+	  digitalLida = true;
+    console.log('Digital cadastrada');
+    }
+  });
+
+});
