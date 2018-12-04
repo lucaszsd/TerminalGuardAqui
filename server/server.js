@@ -57,7 +57,6 @@ app.get('/home', (req, res) =>{
   res.sendFile(path.join(__dirname + '/../public/home.html'))
 });
 
-
 //==== Home ========================================================
 
 app.get('/identificado', (req, res) =>{
@@ -117,21 +116,25 @@ app.get('/suporte', (req, res) =>{
   res.sendFile(path.join(__dirname + '/../public/suporte.html'))
 });
 
+app.get('/digital', (req, res) =>{
+  res.sendFile(path.join(__dirname + '/../public/concluindoCadastro.html'))
+});
+
 
 //-------------------------------
-const digitalLida = False;
+const digitalLida = false;
 app.post('/digital', (req, res) =>{
   console.log("Chamou a rota no node");
-  console.log(path.join(__dirname + '/../public/scripts/digital.py'));
+  console.log(path.join(__dirname + '/../public/scripts/script.py'));
   
 
-  PythonShell.PythonShell.run(path.join(__dirname + '/../public/scripts/digital.py'), null, function (err, results) {
+  PythonShell.PythonShell.run(path.join(__dirname + '/../public/scripts/script.py'), null, function (err, results) {
     if (err) throw err;
     console.log('finished');
-    if (result[0][1] > 100){
-	digitalLida = True;
+  //  if (result[0][1] > 100){
+	//digitalLida = true;
 
-    }
+  //  }
   });
 
 

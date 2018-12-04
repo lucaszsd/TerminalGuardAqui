@@ -119,9 +119,30 @@ p.yellow-claro{
     color: var(--yellow-claro);
 }
 
+
+
 p.light-grey{
     color: var(--cinza-claro);
 }
+
+p.concluido{
+    margin: 22px;
+    font-size: 75px;
+    margin-bottom: 5px; 
+    font-weight: 300;
+    margin: 0px;
+}
+
+div.concluido{
+    width: 480px;
+    justify-content: right;
+    display: flex;
+    padding-left: 20px;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+
 
 p.name{
     margin: 20px;
@@ -404,7 +425,3 @@ a{
 
 }
 
-@keyframes example {
-    25% { width: 450}
-    80$ {450: yellow;}
-}

@@ -48,8 +48,8 @@ $('document').ready(() =>{
      //========= concluirCadastro ===========================
     
      
-    $('#alo').click(function(){
-        window.location = "/home";
+    $('#btn-concluirCadastro-continuar').click(function(){
+        window.location = "/digital";
     });
 
     $('#btn-concluirCadastro-voltar').click(function(){
@@ -57,23 +57,24 @@ $('document').ready(() =>{
     });
 
 
-     //========= concluirCadastro ===========================
+     //========= concluindoCadastro ===========================
     
 
-     $('#btn-concluindoCadastro-continuar').click(function(){
-        window.location = "/home";
+    $('#btn-concluindoCadastro-voltar').click(function(){
+        alert();
+        window.location = "/concluirCadastro";
     });
 
-
+   
 
     //========= Menu ===========================
     
     $('#btn-menu-guardar').click(function(){
-        window.location = "/guardar";
+        window.location = "/guardado";
     });
     
     $('#btn-menu-retirar').click(function(){
-        window.location = "/retirar";
+        window.location = "/retirado";
     });
 
     $('#btn-menu-sair').click(function(){
@@ -100,13 +101,13 @@ $('document').ready(() =>{
 
       //========= lockerAbertoGuardar ===========================
       $('#btn-footer-guardar').click(function(){
-        window.location = "/guardado";
+        window.location = "/logoff";
     });
 
 
      //========= lockerAbertoGuardado ===========================
      $('#btn-footer-retirar').click(function(){
-        window.location = "/retirado";
+        window.location = "/logoff";
     });
 
 });
