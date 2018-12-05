@@ -1,4 +1,4 @@
-## Script da tela de usuário cadastrado
+## Script da tela de usuario cadastrado
 ## Link sobre comunicacao python nodejs: https://stackoverflow.com/questions/23450534/how-to-call-a-python-function-from-node-js
 
 # Imports
@@ -38,7 +38,7 @@ f.convertImage(0x01)
 result = f.searchTemplate() 
 positionNumber = result[0]
 #print(result)
-##accuracyScore = result[1] ##Talvez usar acurácia como referência de uma digital bem lida
+##accuracyScore = result[1] ##Talvez usar acuracia como referência de uma digital bem lida
 
 ## Digital nao cadastrada
 if ( positionNumber == -1 ): 
