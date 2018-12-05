@@ -18,7 +18,7 @@ try:
         raise ValueError('A senha do sensor esta errada!')
 
 except Exception as e:
-    print('[ERRO] O sensor nao foi inicializado!')
+	print('ERRO O sensor nao foi inicializado!')
 	sys.stdout.flush()
     print('Menssagem de excecao: ' + str(e))
 	sys.stdout.flush()
