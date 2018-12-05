@@ -21,9 +21,7 @@ const server = require('http').Server(app);
 var Gpio = require('onoff').Gpio; //include onoff to interact with the GPIO
 var flag = new Gpio(4, 'out'); //use GPIO pin 4, and specify that it is output
 var lockerAberto = false;
-
-
-
+var botao = new Gpio(18, 'in');
 
 
 // boilerplate version
@@ -33,6 +31,8 @@ const version = `Express-Boilerplate v${require('../package.json').version}`;
 server.listen(port, () => {
   log.info(version);
   log.info(`Listening on port ${port}`);
+  tranca(); //iniciar locker trancado
+  lockerAberto = false;
 });
 
 // 'body-parser' middleware for POST
@@ -55,9 +55,6 @@ app.post('/api/users', jsonParser, (req, res) => {
   if (!req.body) return res.sendStatus(400);
   // create user in req.body
 });
-
-
-
 
 
 //------------------------
@@ -110,11 +107,6 @@ app.get('/guardado', (req, res) =>{
 
 app.get('/retirar', (req, res) =>{
   res.sendFile(path.join(__dirname + '/../public/lockerAbertoRetirar.html'))
-	lockerAberto = true;
-	destranca();
-	
-	tranca()
-	
 });
 
 app.get('/retirado', (req, res) =>{
@@ -126,7 +118,8 @@ app.get('/sair', (req, res) =>{
   res.sendFile(path.join(__dirname + '/../public/home.html'))
 });
 
-app.get('/logoff', (req, res) =>{ 
+app.get('/logoff', (req, res) =>{
+  sensor_trava(); 
   Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 5000);
   res.sendFile(path.join(__dirname + '/../public/home.html'))
 });
@@ -141,22 +134,35 @@ app.get('/digital', (req, res) =>{
 });
 
 
+const sensor_trava = function(){ //funcao de travamento/destravamento
+
+  tranca();
+  lockerAberto = false;
+  
+  while (botao.readSync() == 0){ //botao desativado
+    
+    lockerAberto = false;
+    }
+    
+  while (botao.readSync() == 1){ //botao ativado
+    
+    destranca();
+    lockerAberto = true;
+    }
+  
+  tranca();
+  lockerAberto = false;
+}
+
 const tranca = function(){ //function to start blinking
 
   flag.writeSync(1); 
- 
 }
 
 const destranca = function(){ //function to start blinking
 
   flag.writeSync(0); 
- Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 5000);
- 
- 
 }  
-
-
-
 
 
 //-------------------------------
@@ -166,14 +172,11 @@ app.post('/buscaDigital', (req, res) =>{
   PythonShell.PythonShell.run(path.join(__dirname + '/../public/scripts/digital.py'), null, function (err, results) {
 	console.log('Aguardando digital')
 	console.log(results);
-	console.log(results[1]);
 	if (results[1] > 100){
 		digitalLida = true;
 		console.log(digitalLida);
 		console.log('Digital reconhecida');
 	}
-	
-
   });
 
 });
