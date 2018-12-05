@@ -44,7 +44,7 @@ if ( positionNumber >= 0 ):
 	print(msg)
 	sys.stdout.flush()
 
-## Realizar cadastro da digital (talvez usar double check, por enquanto só le uma vez)
+## Realizar cadastro da digital (talvez usar double check, por enquanto so le uma vez)
 else:
 
 	## Cria novo template
