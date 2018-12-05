@@ -13,40 +13,40 @@ f = PyFingerprint('/dev/ttyUSB0', 57600, 0xFFFFFFFF, 0x00000000)
 if ( f.verifyPassword() == False ): ## Se nao conseguiu, flag de inicializacao = -1
     print(-1)
 	sys.stdout.flush()
-	exit(-1)
+	
 else								## Se conseguiu, flag de inicializacao = 0
 	print(0)
 	sys.stdout.flush()
 
-## Espera leitura
-while ( f.readImage() == False ):
-    pass
+	## Espera leitura
+	while ( f.readImage() == False ):
+		pass
 
-## Converter a imagem recebida para atributos e armazenar em charbuffer1
-f.convertImage(0x01)
+	## Converter a imagem recebida para atributos e armazenar em charbuffer1
+	f.convertImage(0x01)
 
-## Checar se digital ja cadastrada
-result = f.searchTemplate()
-positionNumber = result[0]
+	## Checar se digital ja cadastrada
+	result = f.searchTemplate()
+	positionNumber = result[0]
 
-## Digital ja cadastrada
-if ( positionNumber >= 0 ):
-    
-	## Enviar mensagem de digital ja cadastrada pro node
-	msg = (-1,-1)
-	print(msg)
-	sys.stdout.flush()
+	## Digital ja cadastrada
+	if ( positionNumber >= 0 ):
+		
+		## Enviar mensagem de digital ja cadastrada pro node
+		msg = (-1,-1)
+		print(msg)
+		sys.stdout.flush()
 
-## Realizar cadastro da digital (talvez usar double check, por enquanto so le uma vez)
-else:
+	## Realizar cadastro da digital (talvez usar double check, por enquanto so le uma vez)
+	else:
 
-	## Cria novo template
-	f.createTemplate()
+		## Cria novo template
+		f.createTemplate()
 
-	## Salva template em novo lugar do array de templates
-	positionNumber = f.storeTemplate()
-	
-	## Envia mensagem de cadastro concluido pro node
-	msg = f.searchTemplate()
-	print(msg)
-	sys.stdout.flush()
+		## Salva template em novo lugar do array de templates
+		positionNumber = f.storeTemplate()
+		
+		## Envia mensagem de cadastro concluido pro node
+		msg = f.searchTemplate()
+		print(msg)
+		sys.stdout.flush()
