@@ -17,6 +17,15 @@ app.use(express.static(`${__dirname}/../public`));
 const port = process.env.PORT || 3000;
 const server = require('http').Server(app);
 
+
+var Gpio = require('onoff').Gpio; //include onoff to interact with the GPIO
+var flag = new Gpio(4, 'out'); //use GPIO pin 4, and specify that it is output
+var lockerAberto = false;
+
+
+
+
+
 // boilerplate version
 const version = `Express-Boilerplate v${require('../package.json').version}`;
 
@@ -101,6 +110,11 @@ app.get('/guardado', (req, res) =>{
 
 app.get('/retirar', (req, res) =>{
   res.sendFile(path.join(__dirname + '/../public/lockerAbertoRetirar.html'))
+	lockerAberto = true;
+	destranca();
+	
+	tranca()
+	
 });
 
 app.get('/retirado', (req, res) =>{
@@ -125,6 +139,22 @@ app.get('/suporte', (req, res) =>{
 app.get('/digital', (req, res) =>{
   res.sendFile(path.join(__dirname + '/../public/concluindoCadastro.html'))
 });
+
+
+const tranca = function(){ //function to start blinking
+
+  flag.writeSync(1); 
+ 
+}
+
+const destranca = function(){ //function to start blinking
+
+  flag.writeSync(0); 
+ Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 5000);
+ 
+ 
+}  
+
 
 
 
