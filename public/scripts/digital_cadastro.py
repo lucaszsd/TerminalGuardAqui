@@ -5,7 +5,9 @@
 import time
 from pyfingerprint.pyfingerprint import PyFingerprint
 
-print('está rodando script python')
+
+print("Cadastro de digital")
+sys.stdout.flush()
 
 ## Tenta inicializar o sensor
 try:
@@ -13,7 +15,7 @@ try:
 	
 	## Talvez mandar mensagem de erro pro node aqui
     if ( f.verifyPassword() == False ):
-        raise ValueError('A senha do sensor está errada!')
+        raise ValueError('A senha do sensor esta errada!')
 
 except Exception as e:
     print('O sensor nao foi inicializado!')
@@ -30,14 +32,14 @@ while ( f.readImage() == False ):
 ## Converter a imagem recebida para atributos e armazenar em charbuffer1
 f.convertImage(0x01)
 
-## Checar se digital já cadastrada
+## Checar se digital ja cadastrada
 result = f.searchTemplate()
 positionNumber = result[0]
 
-## Digital já cadastrada
+## Digital ja cadastrada
 if ( positionNumber >= 0 ):
     
-	## Enviar mensagem de digital já cadastrada pro node
+	## Enviar mensagem de digital ja cadastrada pro node
 	msg = 'ja cadastrada'
 	print(msg)
 	sys.stdout.flush()

@@ -7,8 +7,8 @@ from pyfingerprint.pyfingerprint import PyFingerprint
 
 
 
-#print("FOI")
-#sys.stdout.flush()
+print("Busca por digital")
+sys.stdout.flush()
 
 ## Tenta inicializar o sensor
 try:
