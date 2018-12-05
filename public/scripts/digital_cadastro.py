@@ -53,7 +53,7 @@ else:
 	## Salva template em novo lugar do array de templates
 	positionNumber = f.storeTemplate()
 	
-	## Envia mensagem de cadastro concluído pro node
+	## Envia mensagem de cadastro concluido pro node
 	msg = 'concluido'
 	print(msg)
 	sys.stdout.flush()
@@ -61,7 +61,7 @@ else:
 
 	
 ## Verificar se o script roda concorrentemente
-## Caso nao rodar e quiser double check, alterar script para: receber flag de qual é a leitura; enviar sha das leituras para o node fazer double check
+## Caso nao rodar e quiser double check, alterar script para: receber flag de qual e a leitura; enviar sha das leituras para o node fazer double check
 	
 ## Aguardar para nova leitura
 ##time.sleep(2)
@@ -76,7 +76,7 @@ else:
 ## Compara os charbuffers
 ##if ( f.compareCharacteristics() == 0 ):
     
-	## Enviar mensagem de cadastro nao concluído
+	## Enviar mensagem de cadastro nao concluido
 	##msg = 'nao concluido'
 	##print (msg)
 	##sys.stdout.flush()
