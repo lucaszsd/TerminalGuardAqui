@@ -20,9 +20,9 @@ try:
 except Exception as e:
 	print('ERRO O sensor nao foi inicializado!')
 	sys.stdout.flush()
-    print('Menssagem de excecao: ' + str(e))
+	print('Menssagem de excecao: ' + str(e))
 	sys.stdout.flush()
-    exit(1)
+	exit(1)
     
 ## Talvez mandar mensagem de aguardando digital pro node
 ## print('Coloque sua digital')
