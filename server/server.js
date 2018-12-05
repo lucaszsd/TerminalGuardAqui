@@ -140,8 +140,6 @@ app.post('/buscaDigital', (req, res) =>{
 });
 
 
-//-------------------------------
-const digitalLida = false;
 app.post('/cadastraDigital', (req, res) =>{
   console.log(path.join(__dirname + '/../public/scripts/digital_cadastro.py'));
   
