@@ -45,7 +45,7 @@ sys.stdout.flush()
 if ( positionNumber >= 0 ):
     
 	## Enviar mensagem de digital ja cadastrada pro node
-	msg = 'Digital já está cadastrada no sistema'
+	msg = 'Digital ja esta cadastrada no sistema'
 	print(msg)
 	sys.stdout.flush()
 
