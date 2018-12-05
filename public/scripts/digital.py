@@ -11,13 +11,12 @@ from pyfingerprint.pyfingerprint import PyFingerprint
 f = PyFingerprint('/dev/ttyUSB0', 57600, 0xFFFFFFFF, 0x00000000)
 
 if ( f.verifyPassword() == False ): ## Se nao conseguiu inicializar, flag de inicializacao = -1
-    print(-1)
+	print(-2)
+	sys.stdout.flush()
+	print(-2)
 	sys.stdout.flush()
 	
-else								## Se conseguiu inicializar, flag de inicializacao = 0
-	print(0)
-	sys.stdout.flush()
-
+else:						## Se conseguiu inicializar, flag de inicializacao = 0
 	## Esperar leitura
 	while ( f.readImage() == False ):
 		pass
@@ -32,8 +31,9 @@ else								## Se conseguiu inicializar, flag de inicializacao = 0
 	if ( positionNumber == -1 ): 
 		
 		## Enviar mensagem de nao encontrada pro node
-		msg = (-1,-1)
-		print(msg)
+		print(-1)
+		sys.stdout.flush()
+		print(-1)
 		sys.stdout.flush()
 		
 	## Digital cadastrada
@@ -49,7 +49,9 @@ else								## Se conseguiu inicializar, flag de inicializacao = 0
 		sha2 = hashlib.sha256(characterics).hexdigest() 
 		
 		## Enviar resultado pro node
-		print(result)
+		print(result[0])
+		sys.stdout.flush()
+		print(result[1])
 		sys.stdout.flush()
 		
 		## Enviar chave sha-2 do template para o node

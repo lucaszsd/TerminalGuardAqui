@@ -134,12 +134,15 @@ app.get('/digital', (req, res) =>{
 app.post('/buscaDigital', (req, res) =>{
 
   PythonShell.PythonShell.run(path.join(__dirname + '/../public/scripts/digital.py'), null, function (err, results) {
-    if (err) throw err;
-    if (results[0][1] > 100){
-	  digitalLida = true;
-    console.log('Digital reconhecida');
-   }
+	console.log('Aguardando digital')
 	console.log(results);
+	console.log(results[1]);
+	if (results[1] > 100){
+		digitalLida = true;
+		console.log(digitalLida);
+		console.log('Digital reconhecida');
+	}
+	
 
   });
 
@@ -149,7 +152,6 @@ app.post('/buscaDigital', (req, res) =>{
 app.post('/cadastraDigital', (req, res) =>{
   
   PythonShell.PythonShell.run(path.join(__dirname + '/../public/scripts/digital_cadastro.py'), null, function (err, results) {
-    if (err) throw err;
     if (results[0][1] > 100){
 	    digitalLida = true;
     }
