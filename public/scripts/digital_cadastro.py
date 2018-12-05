@@ -1,5 +1,5 @@
 ## Script para concluir cadastro
-## Link sobre comunicação python nodejs: https://stackoverflow.com/questions/23450534/how-to-call-a-python-function-from-node-js
+## Link sobre comunicacao python nodejs: https://stackoverflow.com/questions/23450534/how-to-call-a-python-function-from-node-js
 
 ## Imports
 import time
@@ -16,8 +16,8 @@ try:
         raise ValueError('A senha do sensor está errada!')
 
 except Exception as e:
-    print('O sensor não foi inicializado!')
-    print('Menssagem de exceção: ' + str(e))
+    print('O sensor nao foi inicializado!')
+    print('Menssagem de excecao: ' + str(e))
     exit(1)
     
 ## Talvez mandar mensagem de aguardando digital pro node
@@ -59,7 +59,7 @@ else:
 
 	
 ## Verificar se o script roda concorrentemente
-## Caso não rodar e quiser double check, alterar script para: receber flag de qual é a leitura; enviar sha das leituras para o node fazer double check
+## Caso nao rodar e quiser double check, alterar script para: receber flag de qual é a leitura; enviar sha das leituras para o node fazer double check
 	
 ## Aguardar para nova leitura
 ##time.sleep(2)
@@ -74,7 +74,7 @@ else:
 ## Compara os charbuffers
 ##if ( f.compareCharacteristics() == 0 ):
     
-	## Enviar mensagem de cadastro não concluído
+	## Enviar mensagem de cadastro nao concluído
 	##msg = 'nao concluido'
 	##print (msg)
 	##sys.stdout.flush()

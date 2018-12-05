@@ -1,5 +1,5 @@
 ## Script da tela de usuário cadastrado
-## Link sobre comunicação python nodejs: https://stackoverflow.com/questions/23450534/how-to-call-a-python-function-from-node-js
+## Link sobre comunicacao python nodejs: https://stackoverflow.com/questions/23450534/how-to-call-a-python-function-from-node-js
 
 # Imports
 import hashlib, sys
@@ -16,12 +16,12 @@ try:
 	
 	## Talvez mandar mensagem de erro pro node aqui
     if ( f.verifyPassword() == False ):
-        raise ValueError('A senha do sensor está errada!')
+        raise ValueError('A senha do sensor esta errada!')
 
 except Exception as e:
-    print('O sensor não foi inicializado!')
+    print('O sensor nao foi inicializado!')
     sys.stdout.flush()
-    print('Menssagem de exceção: ' + str(e))
+    print('Menssagem de excecao: ' + str(e))
     sys.stdout.flush()
     exit(1)
 
@@ -40,10 +40,10 @@ positionNumber = result[0]
 #print(result)
 ##accuracyScore = result[1] ##Talvez usar acurácia como referência de uma digital bem lida
 
-## Digital não cadastrada
+## Digital nao cadastrada
 if ( positionNumber == -1 ): 
 	
-	## Enviar mensagem de não encontrada pro node
+	## Enviar mensagem de nao encontrada pro node
 	msg = (-1,-1)
 	print(msg)
 	sys.stdout.flush()
