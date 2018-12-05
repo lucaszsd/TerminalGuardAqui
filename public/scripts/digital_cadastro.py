@@ -2,7 +2,7 @@
 ## Link sobre comunicacao python nodejs: https://stackoverflow.com/questions/23450534/how-to-call-a-python-function-from-node-js
 
 ## Imports
-import time
+import time, sys
 from pyfingerprint.pyfingerprint import PyFingerprint
 
 
