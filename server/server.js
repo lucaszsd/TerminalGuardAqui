@@ -7,7 +7,7 @@ const express = require('express');
 const path = require('path');
 const PythonShell = require('python-shell');
 const app = express();
-
+var digitalLida = false;
 
 
 app.use(require('helmet')()); // use helmet
@@ -66,6 +66,10 @@ app.get('/identificado', (req, res) =>{
 app.get('/menu', (req, res) =>{
   if(digitalLida == true){
     res.sendFile(path.join(__dirname + '/../public/menu.html'))
+  }
+  else{
+    res.sendFile(path.join(__dirname + '/../public/home.html'))
+    digitalLida = false;  
   }
 });
 
@@ -126,7 +130,7 @@ app.get('/digital', (req, res) =>{
 
 
 //-------------------------------
-const digitalLida = false;
+
 app.post('/buscaDigital', (req, res) =>{
 
   PythonShell.PythonShell.run(path.join(__dirname + '/../public/scripts/digital.py'), null, function (err, results) {
@@ -134,7 +138,9 @@ app.post('/buscaDigital', (req, res) =>{
     if (results[0][1] > 100){
 	  digitalLida = true;
     console.log('Digital reconhecida');
-    }
+   }
+	console.log(results);
+
   });
 
 });
@@ -147,6 +153,7 @@ app.post('/cadastraDigital', (req, res) =>{
     if (results[0][1] > 100){
 	    digitalLida = true;
     }
+	console.log(results)
   });
 
 });
