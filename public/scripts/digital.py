@@ -1,32 +1,21 @@
 ## Script da tela de usuario cadastrado
 ## Link sobre comunicacao python nodejs: https://stackoverflow.com/questions/23450534/how-to-call-a-python-function-from-node-js
 
-# Imports
+## Estrutura do retorno: [flag_inicializacao, (positionNumber,accuracyScore)]
+
+## Imports
 import hashlib, sys
 from pyfingerprint.pyfingerprint import PyFingerprint
 
-
-
-#print("Busca por digital")
-#sys.stdout.flush()
-
 ## Tenta inicializar o sensor
-try:
-    f = PyFingerprint('/dev/ttyUSB0', 57600, 0xFFFFFFFF, 0x00000000)
-	
-	## Talvez mandar mensagem de erro pro node aqui
-    if ( f.verifyPassword() == False ):
-        raise ValueError('A senha do sensor esta errada!')
-
-except Exception as e:
-    print('O sensor nao foi inicializado!')
-    sys.stdout.flush()
-    print('Menssagem de excecao: ' + str(e))
-    sys.stdout.flush()
-    exit(1)
-
-## Talvez mandar mensagem de aguardando digital pro node
-## print('Coloque sua digital')
+f = PyFingerprint('/dev/ttyUSB0', 57600, 0xFFFFFFFF, 0x00000000)
+if ( f.verifyPassword() == False ): ## Se nao conseguiu inicializar, flag de inicializacao = -1
+    print(-1)
+	sys.stdout.flush()
+	exit(-1)
+else								## Se conseguiu inicializar, flag de inicializacao = 0
+	print(0)
+	sys.stdout.flush()
 
 ## Esperar leitura
 while ( f.readImage() == False ):
@@ -37,8 +26,6 @@ f.convertImage(0x01)
 ## Procurar por template 
 result = f.searchTemplate() 
 positionNumber = result[0]
-#print(result)
-##accuracyScore = result[1] ##Talvez usar acuracia como referencia de uma digital bem lida
 
 ## Digital nao cadastrada
 if ( positionNumber == -1 ): 
@@ -60,8 +47,10 @@ else:
 	## Atributos do hash do template
 	sha2 = hashlib.sha256(characterics).hexdigest() 
 	
+	## Enviar resultado pro node
+	print(result)
+	sys.stdout.flush()
+	
 	## Enviar chave sha-2 do template para o node
 	#print(sha2)
 	#sys.stdout.flush()
-	print(result)
-	sys.stdout.flush()
