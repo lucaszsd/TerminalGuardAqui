@@ -18,8 +18,10 @@ try:
         raise ValueError('A senha do sensor esta errada!')
 
 except Exception as e:
-    print('O sensor nao foi inicializado!')
+    print('[ERRO] O sensor nao foi inicializado!')
+	sys.stdout.flush()
     print('Menssagem de excecao: ' + str(e))
+	sys.stdout.flush()
     exit(1)
     
 ## Talvez mandar mensagem de aguardando digital pro node
@@ -35,12 +37,15 @@ f.convertImage(0x01)
 ## Checar se digital ja cadastrada
 result = f.searchTemplate()
 positionNumber = result[0]
+print(result)
+sys.stdout.flush()
+
 
 ## Digital ja cadastrada
 if ( positionNumber >= 0 ):
     
 	## Enviar mensagem de digital ja cadastrada pro node
-	msg = 'ja cadastrada'
+	msg = 'Digital já está cadastrada no sistema'
 	print(msg)
 	sys.stdout.flush()
 
@@ -54,7 +59,7 @@ else:
 	positionNumber = f.storeTemplate()
 	
 	## Envia mensagem de cadastro concluido pro node
-	msg = 'concluido'
+	msg = 'Digital cadastrada'
 	print(msg)
 	sys.stdout.flush()
 
