@@ -38,7 +38,7 @@ f.convertImage(0x01)
 result = f.searchTemplate() 
 positionNumber = result[0]
 #print(result)
-##accuracyScore = result[1] ##Talvez usar acuracia como referência de uma digital bem lida
+##accuracyScore = result[1] ##Talvez usar acuracia como referencia de uma digital bem lida
 
 ## Digital nao cadastrada
 if ( positionNumber == -1 ): 
