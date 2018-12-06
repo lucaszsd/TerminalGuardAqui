@@ -69,11 +69,11 @@ $('document').ready(() =>{
     //========= Menu ===========================
     
     $('#btn-menu-guardar').click(function(){
-        window.location = "/guardado";
+        window.location = "/guardar";
     });
     
     $('#btn-menu-retirar').click(function(){
-        window.location = "/retirado";
+        window.location = "/retirar";
     });
 
     $('#btn-menu-sair').click(function(){
