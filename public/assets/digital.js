@@ -2,7 +2,7 @@ $('document').ready(() =>{
    
 
       $.ajax({
-           type: 'POST',
+           type: 'GET',
             url: 'http://localhost:3000/buscaDigital',						      
             success: function(data) {
                
