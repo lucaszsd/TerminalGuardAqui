@@ -1,0 +1,47 @@
+var Gpio = require('onoff').Gpio; //include onoff to interact with the GPIO
+var flag = new Gpio(4, 'out'); //use GPIO pin 4, and specify that it is output
+var lockerAberto = false;
+var botao = new Gpio(18, 'in');
+
+const sensor_trava = function(){ //funcao de travamento/destravamento
+
+  //tranca();
+  
+  while (botao.readSync() == 0){ //botao desativado
+    console.log('trancado')
+    //lockerAberto = false;
+  }
+  
+  
+  
+  //destranca();
+    
+  while (botao.readSync() == 1){ //botao ativado
+    console.log('destrancado')
+    //destranca();
+    //lockerAberto = true;
+  }
+  //console.log('trancado')
+  //tranca();
+  //lockerAberto = false;
+  
+  //location.href = (path.join(__dirname + '/../public/lockerFechadoGuardar.html'))
+}
+
+const tranca = function(){ //function to start blinking
+
+  flag.writeSync(1); 
+ 
+}
+
+const destranca = function(){ //function to start blinking
+
+  flag.writeSync(0); 
+  //Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 5000);
+
+}  
+
+sensor_trava();
+
+
+//tranca();

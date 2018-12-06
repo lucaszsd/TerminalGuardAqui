@@ -100,13 +100,13 @@ $('document').ready(() =>{
 
       //========= lockerAbertoGuardar ===========================
       $('#btn-footer-guardar').click(function(){
-        window.location = "/logoff";
+        window.location = "/guardado";
     });
 
 
      //========= lockerAbertoGuardado ===========================
      $('#btn-footer-retirar').click(function(){
-        window.location = "/logoff";
+        window.location = "/retirado";
     });
 
 });

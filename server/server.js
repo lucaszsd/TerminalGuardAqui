@@ -7,7 +7,7 @@ const express = require('express');
 const path = require('path');
 const PythonShell = require('python-shell');
 const app = express();
-var digitalLida = false;
+var digitalLida = true;
 
 
 app.use(require('helmet')()); // use helmet
@@ -31,7 +31,7 @@ const version = `Express-Boilerplate v${require('../package.json').version}`;
 server.listen(port, () => {
   log.info(version);
   log.info(`Listening on port ${port}`);
-  tranca(); //iniciar locker trancado
+  //tranca();
   lockerAberto = false;
 });
 
@@ -99,10 +99,16 @@ app.get('/ajuda', (req, res) =>{
 
 app.get('/guardar', (req, res) =>{
   res.sendFile(path.join(__dirname + '/../public/lockerAbertoGuardar.html'))
+  lockerAberto = true;
+  if(lockerAberto){
+   // destranca();
+  }
+  //sensor_trava(); 
 });
 
 app.get('/guardado', (req, res) =>{
   res.sendFile(path.join(__dirname + '/../public/lockerFechadoGuardar.html'))
+  
 });
 
 app.get('/retirar', (req, res) =>{
@@ -110,8 +116,9 @@ app.get('/retirar', (req, res) =>{
 });
 
 app.get('/retirado', (req, res) =>{
+  
+  
   res.sendFile(path.join(__dirname + '/../public/lockerFechadoRetirar.html'))
-
 });
 
 app.get('/sair', (req, res) =>{
@@ -119,7 +126,6 @@ app.get('/sair', (req, res) =>{
 });
 
 app.get('/logoff', (req, res) =>{
-  sensor_trava(); 
   Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 5000);
   res.sendFile(path.join(__dirname + '/../public/home.html'))
 });
@@ -136,22 +142,30 @@ app.get('/digital', (req, res) =>{
 
 const sensor_trava = function(){ //funcao de travamento/destravamento
 
-  tranca();
-  lockerAberto = false;
-  
+  //tranca();
+  /*
   while (botao.readSync() == 0){ //botao desativado
-    
-    lockerAberto = false;
-    }
-    
-  while (botao.readSync() == 1){ //botao ativado
-    
-    destranca();
-    lockerAberto = true;
-    }
+    console.log('trancado')
+    //lockerAberto = false;
+  }
   
-  tranca();
+  botao.readSync() == 0
+  */
+  
+  destranca();
+  Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 2000);
+
+  if (botao.readSync() == 1){ //botao ativado
+    tranca();
+    console.log('trancou')
+    //destranca();
+    //lockerAberto = true;
+  }
+  //console.log('trancado')
+  //tranca();
   lockerAberto = false;
+  
+  //location.href = (path.join(__dirname + '/../public/lockerFechadoGuardar.html'))
 }
 
 const tranca = function(){ //function to start blinking
@@ -160,11 +174,50 @@ const tranca = function(){ //function to start blinking
 }
 
 const destranca = function(){ //function to start blinking
-
+  console.log('destrancado')
   flag.writeSync(0); 
 }  
 
+var aux = null;
 
+/*
+const digital = function(){
+      aux = null;
+      while (aux == null){
+      
+        PythonShell.PythonShell.run(path.join(__dirname + '/../public/scripts/digital.py'), null, function (err, results) {
+        console.log('Aguardando digital')
+        console.log(results);
+        //if (results[1] > 100){
+        //  digitalLida = true;
+        //  console.log(digitalLida);
+        //  console.log('Digital reconhecida');
+        }
+        aux = results
+      });
+        
+        if(aux != null){
+            if(aux[0] == -1){
+              //Nao cadastrada
+            }else if(aux[0] == -2){
+              //Leitor com erro
+              }else{
+                //Digital reconhecida
+                if(aux[1] < 100){
+                    digital();
+                  }else{
+                    return aux;
+                  }
+              }
+        }
+        
+      }
+      
+      
+    
+  
+}
+*/
 //-------------------------------
 
 app.post('/buscaDigital', (req, res) =>{

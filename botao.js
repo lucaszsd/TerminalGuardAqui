@@ -4,27 +4,26 @@ var lockerAberto = false;
 var botao = new Gpio(18, 'in');
 
 const sensor_trava = function(){ //funcao de travamento/destravamento
-  
-  console.log('iniciou')
-  tranca();
-  lockerAberto = false;
-  
-  while (botao.readSync() == 0){
-	
-	console.log('desativado')
-	lockerAberto = false;
-	}
-  
-  while (botao.readSync() == 1){
+  while(true){
+    
+    console.log('iniciou')
+    tranca();
+    lockerAberto = false;
+    
+    while (botao.readSync() == 0){
 	  
-	console.log('ativado')
-	destranca();
-	lockerAberto = true;
-	}  
-	
-	tranca();
-	lockerAberto = false;
-	console.log('finalizou')
+	  console.log('desativado')
+	  lockerAberto = false;
+    }
+    
+    while (botao.readSync() == 1){
+	    
+	  console.log('ativado')
+	  destranca();
+	  lockerAberto = true;
+    }  
+	  
+    }
 }
 
 const tranca = function(){ //function to start blinking
