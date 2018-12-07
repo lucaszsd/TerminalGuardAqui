@@ -1,0 +1,66 @@
+'use strict';
+
+const Promise = require('bluebird');
+// custom logger
+const log = require('./logger.js');
+const express = require('express');
+const path = require('path');
+const PythonShell = require('python-shell');
+const app = express();
+var digitalLida = true; //alterar aqui para evitar ir ao menu sem digital
+var fork = require('child_process').spawnSync;
+
+
+
+app.use(require('helmet')()); // use helmet
+app.use(require('cors')()); // enable CORS
+// serves all static files in /public
+app.use(express.static(`${__dirname}/../public`));
+const port = process.env.PORT || 3000;
+const server = require('http').Server(app);
+
+
+var Gpio = require('onoff').Gpio; 
+var flag = new Gpio(4, 'out'); //GPIO saida pro relé
+var botao = new Gpio(18, 'in');
+var lockerAberto = false;
+
+
+// boilerplate version
+const version = `Express-Boilerplate v${require('../package.json').version}`;
+
+// start server
+server.listen(port, () => {
+  log.info(version);
+  log.info(`Listening on port ${port}`);
+  //tranca();
+  lockerAberto = false;
+});
+
+// 'body-parser' middleware for POST
+const bodyParser = require('body-parser');
+// create application/json parser
+const jsonParser = bodyParser.json();
+// create application/x-www-form-urlencoded parser
+const urlencodedParser = bodyParser.urlencoded({
+  extended: false,
+});
+
+// POST /login gets urlencoded bodies
+app.post('/login', urlencodedParser, (req, res) => {
+  if (!req.body) return res.sendStatus(400);
+  res.send(`welcome, ${req.body.username}`);
+});
+
+// POST /api/users gets JSON bodies
+app.post('/api/users', jsonParser, (req, res) => {
+  if (!req.body) return res.sendStatus(400);
+  // create user in req.body
+});
+
+
+console.log('chamou send')
+
+res.sendFile(path.join(__dirname + '/../public/lockerAbertoGuardar.html'));
+
+

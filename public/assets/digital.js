@@ -5,7 +5,11 @@ $('document').ready(() =>{
            type: 'GET',
             url: 'http://localhost:3000/buscaDigital',						      
             success: function(data) {
-               
+                console.log('terminou')
+                //if (data.result == 'redirect'){
+                  //  console.log('redirecionado')
+                    window.location.replace(data.url);
+                //}
             }
         });
   

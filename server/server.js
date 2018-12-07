@@ -102,7 +102,7 @@ app.get('/ajuda', (req, res) =>{
 
 app.get('/guardar', (req, res) =>{
 	res.sendFile(path.join(__dirname + '/../public/lockerAbertoGuardar.html'))
-  const forked = fork('botao.js');
+  /*const forked = fork('botao.js');
 	forked.on('message', (msg) => {
     
     if (msg.foo == 1){
@@ -116,6 +116,7 @@ app.get('/guardar', (req, res) =>{
     }
     else if(msg.foo == 3){
       console.log('Terminada')
+      return res.status(200).send({result: 'redirect', url:'/guardado'})
       
     }
     else{
@@ -125,8 +126,18 @@ app.get('/guardar', (req, res) =>{
   
   forked.on('close', (code, signal) => {
     //console.log( `child process terminated due to receipt of signal ${signal}`);
-  });
+  });*/
+  
+  
 });
+
+app.get('/sensor', (req, res) =>{
+  console.log('chegou em sensor')
+  sensor_trava();
+  console.log('terminou sensor trava')
+  return res.status(200).send({result: 'redirect', url: '/guardado'})
+});
+
 
 app.get('/guardado', (req, res) =>{
   console.log('Redirecionou pra guardado') 
@@ -169,28 +180,30 @@ app.get('/buscaDigital', (req, res) =>{
 
     if (results == undefined){
       console.log('deu undefined');
-      res.redirect('/buscaDigital')
+      return res.redirect('/buscaDigital')
     }
     else if (results[0] == -2){
       console.log('leitor nao iniciado');
-      res.redirect('/buscaDigital')
+      return res.redirect('/buscaDigital')
     }
     else if (results[0] == -1){
       console.log('nao cadastrada')
       console.log('redirecionando pra cadastro')
-      res.redirect('/cadastro')   
+      return res.status(200).send({result: 'redirect', url:'/concluirCadastro'})
+      //return res.redirect('/concluirCadastro')   
     }
     else if (results[1] > 100){
       digitalLida = true;
       //console.log(digitalLida);
       console.log('Digital reconhecida');
       console.log('redirecionando pra menu')
-      res.redirect('/menu') 
+      return res.status(200).send({result: 'redirect', url:'/menu'})
+      //return res.redirect('/menu') 
     }
     else{
       console.log('digital nao tem acuracia');
       console.log('redirecionando pra buscaDigital')
-      res.redirect('/buscaDigital')
+      return res.redirect('/buscaDigital')
     }
   });
 

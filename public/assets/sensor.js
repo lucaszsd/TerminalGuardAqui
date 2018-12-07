@@ -1,10 +1,11 @@
 $('document').ready(() =>{
    
     $.ajax({
-        type: 'POST',
+        type: 'GET',
         url: 'http://localhost:3000/sensor',						
         success: function(data) {
-        console.log('success');
+            console.log('success');
+            window.location.replace(data.url);
         }
     });
 
