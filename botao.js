@@ -4,29 +4,29 @@ var lockerAberto = false;
 var botao = new Gpio(18, 'in');
 
 const sensor_trava = function(){ //funcao de travamento/destravamento
+/*
+	let counter = 0;
+
+setInterval(() => {
+  process.send({ counter: counter++ });
+}, 1000);
+*/
 
   //process.send('iniciou');
   tranca();
   lockerAberto = false;
   
-  let counter = 0;
-
-  setInterval(() => {
-    process.send({ counter: counter++ });
-  }, 1000);
-  
-  process.send({ foo: 'Porta Fechada'});
+  process.send({ foo: 1});
   while (botao.readSync() == 0){
     lockerAberto = false;
   }
   
-  process.send({ foo: 'Porta Aberta'});
+  process.send({ foo : 2});
   while (botao.readSync() == 1){  
     destranca();
     lockerAberto = true;
   }  
-  console.log('Terminou');
-  process.send({ foo: 'Terminou'});
+  process.send({ foo: 3});
 }
 
 const tranca = function(){ 

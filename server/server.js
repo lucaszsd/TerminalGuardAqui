@@ -102,17 +102,21 @@ app.get('/ajuda', (req, res) =>{
 
 app.get('/guardar', (req, res) =>{
   res.sendFile(path.join(__dirname + '/../public/lockerAbertoGuardar.html'))
-  
-	const forked = fork('botao.js');
+  	const forked = fork('botao.js');
   forked.on('message', (msg) => {
-  //console.log('Message from child', msg);	/*Where the shit goes crazy*/
-    if (msg == 'Porta Aberta'){
+  console.log(typeof(1));	/*Where the shit goes crazy*/
+	console.log(1)
+	console.log(msg === 1) 
+  if (msg == 1){
       lockerAberto = true;
+	console.log(lockerAberto);
     }
-    else if(msg == 'Porta Fechada'){
+    else if(msg == 2){
       lockerAberto = false;
+	console.log(lockerAberto)
     }
-    else if(msg == 'Terminou'){
+    else if(msg == 3){
+	console.log('guardado')
       res.redirect('/guardado');
     }
   
