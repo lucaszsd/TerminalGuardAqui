@@ -1,7 +1,7 @@
 $('document').ready(() =>{
    
     $.ajax({
-        type: 'POST',
+        type: 'GET',
         url: 'http://localhost:3000/cadastraDigital',						
         success: function(data) {
         console.log('success');

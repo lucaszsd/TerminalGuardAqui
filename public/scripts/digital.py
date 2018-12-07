@@ -1,7 +1,7 @@
 ## Script da tela de usuario cadastrado
 ## Link sobre comunicacao python nodejs: https://stackoverflow.com/questions/23450534/how-to-call-a-python-function-from-node-js
 
-## Estrutura do retorno: [flag_inicializacao, (positionNumber,accuracyScore)]
+## Estrutura do retorno: [(positionNumber,accuracyScore)]
 
 ## Imports
 import hashlib, sys
@@ -9,14 +9,13 @@ from pyfingerprint.pyfingerprint import PyFingerprint
 
 ## Tenta inicializar o sensor
 f = PyFingerprint('/dev/ttyUSB0', 57600, 0xFFFFFFFF, 0x00000000)
-
-if ( f.verifyPassword() == False ): ## Se nao conseguiu inicializar, flag de inicializacao = -1
+if ( f.verifyPassword() == False ): ## Se nao conseguiu inicializar, flag de inicializacao = -2
 	print(-2)
 	sys.stdout.flush()
 	print(-2)
 	sys.stdout.flush()
 	
-else:						## Se conseguiu inicializar, flag de inicializacao = 0
+else:						## Se conseguiu inicializar
 	## Esperar leitura
 	while ( f.readImage() == False ):
 		pass

@@ -222,7 +222,7 @@ const digital = function(){
 
 app.get('/buscaDigital', (req, res) =>{
   
-  console.log('redirecionado')
+  console.log('redirecionado pra buscaDigital')
   PythonShell.PythonShell.run(path.join(__dirname + '/../public/scripts/digital.py'), null, function (err, results) {
 	console.log('Aguardando digital')
 	console.log(results);
@@ -246,16 +246,22 @@ app.get('/buscaDigital', (req, res) =>{
 });
 
 
-app.post('/cadastraDigital', (req, res) =>{
+app.get('/cadastraDigital', (req, res) =>{
   
+  console.log('redirecionado pra cadastraDigital')
+
   PythonShell.PythonShell.run(path.join(__dirname + '/../public/scripts/digital_cadastro.py'), null, function (err, results) {
-    if (results[0][1] > 100){
+    if (results == undefined){
+        console.log('deu undefined');
+        res.redirect('/cadastraDigital')
+    }
+    else if (results[0][1] > 100){
 	    digitalLida = true;
     }
     else{
+        console.log('redirecionando pra cadastraDigital')
         res.redirect('/cadastraDigital')
     }
-	console.log(results)
   });
 });
 

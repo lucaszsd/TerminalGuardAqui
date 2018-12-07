@@ -1,23 +1,21 @@
 ## Script para concluir cadastro
 ## Link sobre comunicacao python nodejs: https://stackoverflow.com/questions/23450534/how-to-call-a-python-function-from-node-js
 
-## Estrutura do retorno: [flag_inicializacao, (positionNumber,accuracyScore)]
+## Estrutura do retorno: [(positionNumber,accuracyScore)]
 
 ## Imports
 import time, sys
 from pyfingerprint.pyfingerprint import PyFingerprint
 
-
 ## Tenta inicializar o sensor
 f = PyFingerprint('/dev/ttyUSB0', 57600, 0xFFFFFFFF, 0x00000000)
-if ( f.verifyPassword() == False ): ## Se nao conseguiu, flag de inicializacao = -1
-    print(-1)
+if ( f.verifyPassword() == False ): ## Se nao conseguiu
+    print(-2)
+	sys.stdout.flush()
+	print(-2)
 	sys.stdout.flush()
 	
 else								## Se conseguiu, flag de inicializacao = 0
-	print(0)
-	sys.stdout.flush()
-
 	## Espera leitura
 	while ( f.readImage() == False ):
 		pass
@@ -33,11 +31,12 @@ else								## Se conseguiu, flag de inicializacao = 0
 	if ( positionNumber >= 0 ):
 		
 		## Enviar mensagem de digital ja cadastrada pro node
-		msg = (-1,-1)
-		print(msg)
+		print(-1)
+		sys.stdout.flush()
+		print(-1)
 		sys.stdout.flush()
 
-	## Realizar cadastro da digital (talvez usar double check, por enquanto so le uma vez)
+	## Realizar cadastro da digital
 	else:
 
 		## Cria novo template
@@ -47,6 +46,8 @@ else								## Se conseguiu, flag de inicializacao = 0
 		positionNumber = f.storeTemplate()
 		
 		## Envia mensagem de cadastro concluido pro node
-		msg = f.searchTemplate()
-		print(msg)
+		result = f.searchTemplate()
+		print(result[0])
+		sys.stdout.flush()
+		print(result[1])
 		sys.stdout.flush()
