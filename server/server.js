@@ -132,7 +132,7 @@ app.get('/digital', (req, res) =>{
 //-------------------------------
 
 app.post('/buscaDigital', (req, res) =>{
-
+/*
   PythonShell.PythonShell.run(path.join(__dirname + '/../public/scripts/digital.py'), null, function (err, results) {
     if (err) throw err;
     if (results[0][1] > 100){
@@ -142,7 +142,7 @@ app.post('/buscaDigital', (req, res) =>{
 	console.log(results);
 
   });
-
+*/
 });
 
 

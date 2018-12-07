@@ -17,6 +17,10 @@ $('document').ready(() =>{
         window.location = "/home";
     });
 
+    $('.GuardAqui').click(function(){
+        window.location = "/home";
+    });
+
     //========= Home ===========================
     $('#card-home-identifique').click(function(){
         window.location = "/menu";
