@@ -104,8 +104,6 @@ app.get('/guardar', (req, res) =>{
   destranca();
   //}
   //sensor_trava(); 
-  res.redirect('/sensor')
-
 });
 
 app.get('/guardado', (req, res) =>{
