@@ -8,14 +8,14 @@ import time, sys
 from pyfingerprint.pyfingerprint import PyFingerprint
 
 ## Tenta inicializar o sensor
-f = PyFingerprint('/dev/ttyUSB0', 57600, 0xFFFFFFFF, 0x00000000)
-if ( f.verifyPassword() == False ): ## Se nao conseguiu
-    print(-2)
-	sys.stdout.flush()
-	print(-2)
-	sys.stdout.flush()
+##f = PyFingerprint('/dev/ttyUSB0', 57600, 0xFFFFFFFF, 0x00000000)
+##if ( f.verifyPassword() == False ): ## Se nao conseguiu
+  ##  print(-2)
+	##sys.stdout.flush()
+	##print(-2)
+	##sys.stdout.flush()
 	
-else								## Se conseguiu, flag de inicializacao = 0
+##else							## Se conseguiu, flag de inicializacao = 0
 	## Espera leitura
 	while ( f.readImage() == False ):
 		pass

@@ -7,7 +7,7 @@ const express = require('express');
 const path = require('path');
 const PythonShell = require('python-shell');
 const app = express();
-var digitalLida = true;
+var digitalLida = true; //alterar aqui para evitar ir ao menu sem digital
 
 
 app.use(require('helmet')()); // use helmet
@@ -18,10 +18,10 @@ const port = process.env.PORT || 3000;
 const server = require('http').Server(app);
 
 
-var Gpio = require('onoff').Gpio; //include onoff to interact with the GPIO
-var flag = new Gpio(4, 'out'); //use GPIO pin 4, and specify that it is output
-var lockerAberto = false;
+var Gpio = require('onoff').Gpio; 
+var flag = new Gpio(4, 'out'); //GPIO saida pro relé
 var botao = new Gpio(18, 'in');
+var lockerAberto = false;
 
 
 // boilerplate version
@@ -99,16 +99,10 @@ app.get('/ajuda', (req, res) =>{
 
 app.get('/guardar', (req, res) =>{
   res.sendFile(path.join(__dirname + '/../public/lockerAbertoGuardar.html'))
-  //lockerAberto = true;
-  //if(lockerAberto){
-  //destranca();
-  //}
-  //sensor_trava(); 
 });
 
 app.get('/guardado', (req, res) =>{
   res.sendFile(path.join(__dirname + '/../public/lockerFechadoGuardar.html'))
-  
 });
 
 app.get('/retirar', (req, res) =>{
@@ -116,8 +110,6 @@ app.get('/retirar', (req, res) =>{
 });
 
 app.get('/retirado', (req, res) =>{
-  
-  
   res.sendFile(path.join(__dirname + '/../public/lockerFechadoRetirar.html'))
 });
 
@@ -130,7 +122,6 @@ app.get('/logoff', (req, res) =>{
   res.sendFile(path.join(__dirname + '/../public/home.html'))
 });
 
-
 app.get('/suporte', (req, res) =>{
   res.sendFile(path.join(__dirname + '/../public/suporte.html'))
 });
@@ -139,81 +130,6 @@ app.get('/digital', (req, res) =>{
   res.sendFile(path.join(__dirname + '/../public/concluindoCadastro.html'))
 });
 
-
-const sensor_trava = function(){ //funcao de travamento/destravamento
-
-  tranca();
-  console.log('trancado')
-  while (botao.readSync() == 0){ //botao desativado
-    //console.log('trancado')
-    //lockerAberto = false;
-  }
-  
-  destranca();
-  console.log('destrancado')
-
-  while(botao.readSync() == 1){ //botao ativado
-    //console.log('trancou')
-    //destranca();
-  }
-  
-  tranca();
-  console.log('trancado')
-  lockerAberto = false;
-  
-  //location.href = (path.join(__dirname + '/../public/lockerFechadoGuardar.html'))
-}
-
-const tranca = function(){ //function to start blinking
-
-  flag.writeSync(1); 
-}
-
-const destranca = function(){ //function to start blinking
-  console.log('destrancado')
-  flag.writeSync(0); 
-}  
-
-var aux = null;
-
-/*
-const digital = function(){
-      aux = null;
-      while (aux == null){
-      
-        PythonShell.PythonShell.run(path.join(__dirname + '/../public/scripts/digital.py'), null, function (err, results) {
-        console.log('Aguardando digital')
-        console.log(results);
-        //if (results[1] > 100){
-        //  digitalLida = true;
-        //  console.log(digitalLida);
-        //  console.log('Digital reconhecida');
-        }
-        aux = results
-      });
-        
-        if(aux != null){
-            if(aux[0] == -1){
-              //Nao cadastrada
-            }else if(aux[0] == -2){
-              //Leitor com erro
-              }else{
-                //Digital reconhecida
-                if(aux[1] < 100){
-                    digital();
-                  }else{
-                    return aux;
-                  }
-              }
-        }
-        
-      }
-      
-      
-    
-  
-}
-*/
 //-------------------------------
 
 app.get('/buscaDigital', (req, res) =>{
@@ -269,3 +185,75 @@ app.get('/sensor', (req, res) =>{
   console.log('Redirecionou pra guardado')
 
 });
+
+const sensor_trava = function(){ //funcao de travamento/destravamento
+
+  tranca();
+  console.log('trancado')
+  
+  while (botao.readSync() == 0){ //botao desativado
+  }
+  
+  destranca();
+  console.log('destrancado')
+
+  while(botao.readSync() == 1){ //botao ativado
+  }
+  
+  tranca();
+  console.log('trancado')
+  lockerAberto = false;
+  
+  //location.href = (path.join(__dirname + '/../public/lockerFechadoGuardar.html'))
+}
+
+const tranca = function(){ //function to start blinking
+
+  flag.writeSync(1); 
+}
+
+const destranca = function(){ //function to start blinking
+  console.log('destrancado')
+  flag.writeSync(0); 
+}  
+
+/*var aux = null;
+
+
+const digital = function(){
+      aux = null;
+      while (aux == null){
+      
+        PythonShell.PythonShell.run(path.join(__dirname + '/../public/scripts/digital.py'), null, function (err, results) {
+        console.log('Aguardando digital')
+        console.log(results);
+        //if (results[1] > 100){
+        //  digitalLida = true;
+        //  console.log(digitalLida);
+        //  console.log('Digital reconhecida');
+        }
+        aux = results
+      });
+        
+        if(aux != null){
+            if(aux[0] == -1){
+              //Nao cadastrada
+            }else if(aux[0] == -2){
+              //Leitor com erro
+              }else{
+                //Digital reconhecida
+                if(aux[1] < 100){
+                    digital();
+                  }else{
+                    return aux;
+                  }
+              }
+        }
+        
+      }
+      
+      
+    
+  
+}
+*/
