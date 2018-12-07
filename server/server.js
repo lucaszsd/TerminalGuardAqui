@@ -99,11 +99,13 @@ app.get('/ajuda', (req, res) =>{
 
 app.get('/guardar', (req, res) =>{
   res.sendFile(path.join(__dirname + '/../public/lockerAbertoGuardar.html'))
-  lockerAberto = true;
-  if(lockerAberto){
-   // destranca();
-  }
+  //lockerAberto = true;
+  //if(lockerAberto){
+  destranca();
+  //}
   //sensor_trava(); 
+  res.redirect('/sensor')
+
 });
 
 app.get('/guardado', (req, res) =>{
@@ -242,6 +244,13 @@ app.get('/buscaDigital', (req, res) =>{
       
   }
   });
+
+});
+
+
+app.get('/sensor', (req, res) =>{
+  
+  console.log('Sensor funcionando')
 
 });
 
