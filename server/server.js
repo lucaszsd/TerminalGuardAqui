@@ -1,5 +1,7 @@
 'use strict';
 
+import {PythonShell} from 'python-shell';
+
 const Promise = require('bluebird');
 // custom logger
 const log = require('./logger.js');
@@ -220,9 +222,28 @@ const digital = function(){
 */
 //-------------------------------
 
+let pyshell = new PythonShell(__dirname + '/../public/scripts/hello.py');
+
 app.post('/buscaDigital', (req, res) =>{
 
-  PythonShell.PythonShell.run(path.join(__dirname + '/../public/scripts/digital.py'), null, function (err, results) {
+  resultado = pyshell.receive(result)
+
+  if (resultado = -2){
+    console.log('Sensor nao inicializado')
+  } else if (resultado = -1){
+    console.log('Não identificado')
+  } else{
+    digitalLida = true;
+    console.log(resultado);
+    console.log('Digital reconhecida');
+  }
+
+  pyshell.end(function (err) {
+    console.log('Fim');}
+  
+});
+
+  /*PythonShell.PythonShell.run(path.join(__dirname + '/../public/scripts/digital.py'), null, function (err, results) {
 	console.log('Aguardando digital')
 	console.log(results);
 	if (results[1] > 100){
@@ -230,7 +251,7 @@ app.post('/buscaDigital', (req, res) =>{
 		console.log(digitalLida);
 		console.log('Digital reconhecida');
 	}
-  });
+  });*/
 
 });
 
