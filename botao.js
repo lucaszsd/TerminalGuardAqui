@@ -16,17 +16,18 @@ setInterval(() => {
   tranca();
   lockerAberto = false;
   
-  process.send({ foo: 1});
+  process.send({ foo : 1});
   while (botao.readSync() == 0){
-    lockerAberto = false;
+    //lockerAberto = false;
   }
   
   process.send({ foo : 2});
   while (botao.readSync() == 1){  
     destranca();
-    lockerAberto = true;
+    //lockerAberto = true;
   }  
-  process.send({ foo: 3});
+
+  process.send({ foo : 3});
 }
 
 const tranca = function(){ 

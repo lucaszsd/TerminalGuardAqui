@@ -1346,3 +1346,139 @@
 {"name":"general-log","hostname":"raspberrypi","pid":2793,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T08:59:46.583Z","v":0}
 {"name":"general-log","hostname":"raspberrypi","pid":2818,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T09:00:16.840Z","v":0}
 {"name":"general-log","hostname":"raspberrypi","pid":2818,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T09:00:16.850Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":2907,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T09:09:39.310Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":2907,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T09:09:39.317Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":2944,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T09:13:44.642Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":2944,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T09:13:44.650Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":2980,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T09:15:37.247Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":2980,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T09:15:37.254Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":3014,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T09:17:13.920Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":3014,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T09:17:13.927Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":3055,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T09:18:01.899Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":3055,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T09:18:01.905Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":3070,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T09:18:16.200Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":3070,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T09:18:16.207Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":3083,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T09:18:20.170Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":3083,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T09:18:20.177Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":3114,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T09:20:06.677Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":3114,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T09:20:06.684Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":3130,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T09:20:18.860Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":3130,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T09:20:18.868Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":3205,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T09:21:45.095Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":3205,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T09:21:45.102Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":3235,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T09:22:02.174Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":3235,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T09:22:02.181Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":3258,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T09:22:32.002Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":3258,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T09:22:32.009Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":3271,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T09:22:41.101Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":3271,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T09:22:41.109Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":3298,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T09:24:02.504Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":3298,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T09:24:02.511Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":28803,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T09:27:34.541Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":28803,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T09:27:34.548Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":28831,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T09:28:06.412Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":28831,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T09:28:06.419Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":28862,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T09:28:13.991Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":28862,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T09:28:13.998Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":28896,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T09:29:30.861Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":28896,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T09:29:30.868Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":28909,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T09:29:39.808Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":28909,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T09:29:39.814Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":28940,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T09:29:45.609Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":28940,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T09:29:45.616Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":28973,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T09:30:12.725Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":28973,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T09:30:12.732Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":29092,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T09:34:11.904Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":29092,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T09:34:11.912Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":29108,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T09:34:25.676Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":29108,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T09:34:25.684Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":29122,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T09:34:40.239Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":29122,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T09:34:40.247Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":29161,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T09:35:50.419Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":29161,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T09:35:50.426Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":29174,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T09:35:53.782Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":29174,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T09:35:53.789Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":29188,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T09:35:58.067Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":29188,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T09:35:58.074Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":29205,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T09:36:32.261Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":29205,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T09:36:32.268Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":29219,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T09:36:52.397Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":29219,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T09:36:52.405Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":29232,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T09:36:54.935Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":29232,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T09:36:54.942Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":29245,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T09:36:59.328Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":29245,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T09:36:59.335Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":29261,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T09:37:13.598Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":29261,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T09:37:13.605Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":29292,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T09:38:06.207Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":29292,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T09:38:06.214Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":1212,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T10:14:19.820Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":1212,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T10:14:19.826Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":1717,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T10:31:13.017Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":1717,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T10:31:13.023Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":1748,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T10:32:47.771Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":1748,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T10:32:47.778Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":1762,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T10:33:07.467Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":1762,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T10:33:07.475Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":1775,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T10:33:11.825Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":1775,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T10:33:11.833Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":1796,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T10:33:30.317Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":1796,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T10:33:30.325Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":1809,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T10:33:39.387Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":1809,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T10:33:39.395Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":1822,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T10:33:46.892Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":1822,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T10:33:46.899Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":1837,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T10:34:07.070Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":1837,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T10:34:07.078Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":1872,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T10:35:21.959Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":1872,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T10:35:21.966Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":1885,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T10:35:25.389Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":1885,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T10:35:25.396Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":1898,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T10:35:31.622Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":1898,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T10:35:31.628Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":1912,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T10:35:39.061Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":1912,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T10:35:39.070Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":1927,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T10:36:43.055Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":1927,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T10:36:43.062Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":1958,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T10:38:16.057Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":1958,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T10:38:16.064Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":1971,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T10:38:23.943Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":1971,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T10:38:23.950Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":1985,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T10:38:34.399Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":1985,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T10:38:34.406Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":2022,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T10:39:07.652Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":2022,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T10:39:07.661Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":2119,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T10:40:54.501Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":2119,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T10:40:54.508Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":2147,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T10:42:21.301Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":2147,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T10:42:21.307Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":2161,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T10:42:22.591Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":2161,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T10:42:22.598Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":2191,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T10:44:09.602Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":2191,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T10:44:09.609Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":2221,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T10:44:47.240Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":2221,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T10:44:47.247Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":2235,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T10:45:02.501Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":2235,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T10:45:02.507Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":2273,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T10:46:27.996Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":2273,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T10:46:28.003Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":2305,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T10:46:35.306Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":2305,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T10:46:35.316Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":2337,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T10:47:15.108Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":2337,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T10:47:15.116Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":2382,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T10:47:50.249Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":2382,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T10:47:50.256Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":2415,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T10:48:18.459Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":2415,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T10:48:18.467Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":2451,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T10:48:54.803Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":2451,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T10:48:54.810Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":2477,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T10:49:22.283Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":2477,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T10:49:22.291Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":2533,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T10:50:52.991Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":2533,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T10:50:52.997Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":2547,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T10:51:08.909Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":2547,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T10:51:08.916Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":2594,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T10:51:41.145Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":2594,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T10:51:41.152Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":2804,"level":30,"msg":"Express-Boilerplate v1.6.0","time":"2018-12-07T10:54:01.629Z","v":0}
+{"name":"general-log","hostname":"raspberrypi","pid":2804,"level":30,"msg":"Listening on port 3000","time":"2018-12-07T10:54:01.636Z","v":0}

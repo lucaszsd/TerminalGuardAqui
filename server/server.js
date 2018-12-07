@@ -101,30 +101,37 @@ app.get('/ajuda', (req, res) =>{
 //==== Menu ========================================================
 
 app.get('/guardar', (req, res) =>{
-  res.sendFile(path.join(__dirname + '/../public/lockerAbertoGuardar.html'))
-  	const forked = fork('botao.js');
-  forked.on('message', (msg) => {
-  console.log(typeof(1));	/*Where the shit goes crazy*/
-	console.log(1)
-	console.log(msg === 1) 
-  if (msg == 1){
+	res.sendFile(path.join(__dirname + '/../public/lockerAbertoGuardar.html'))
+/*	
+const forked = fork('botao.js');
+	forked.on('message', (msg) => {
+ // console.log(typeof(msg));	/*Where the shit goes crazy*/
+//console.log(typeof(msg.foo))
+	console.log(msg.foo.valueOf())  
+if (msg.foo == 1){
+	
       lockerAberto = true;
-	console.log(lockerAberto);
+      console.log('Aberta');
     }
-    else if(msg == 2){
+    else if(msg.foo == 2){
       lockerAberto = false;
-	console.log(lockerAberto)
+      console.log('Fechada')
+	//res.redirect('/guardado')
     }
-    else if(msg == 3){
-	console.log('guardado')
-      res.redirect('/guardado');
-    }
+    else if(msg.foo == 3){
+	console.log('Terminada')
+      //res.redirect('/guardado');
+    }else{
+	console.log('teste de quarda opção - [DESCARTAVEL]')
+	}
+
+
   
   });
+*/
+  //forked.send({ hello: 'world' });
 
-  forked.send({ hello: 'world' });
-
-
+res.redirect('/guardado')
 });
 
 app.get('/guardado', (req, res) =>{
