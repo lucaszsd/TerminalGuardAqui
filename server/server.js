@@ -101,7 +101,7 @@ app.get('/guardar', (req, res) =>{
   res.sendFile(path.join(__dirname + '/../public/lockerAbertoGuardar.html'))
   //lockerAberto = true;
   //if(lockerAberto){
-  destranca();
+  //destranca();
   //}
   //sensor_trava(); 
 });
@@ -142,27 +142,23 @@ app.get('/digital', (req, res) =>{
 
 const sensor_trava = function(){ //funcao de travamento/destravamento
 
-  //tranca();
-  /*
+  tranca();
+  console.log('trancado')
   while (botao.readSync() == 0){ //botao desativado
-    console.log('trancado')
+    //console.log('trancado')
     //lockerAberto = false;
   }
   
-  botao.readSync() == 0
-  */
-  
   destranca();
-  Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 2000);
+  console.log('destrancado')
 
-  if (botao.readSync() == 1){ //botao ativado
-    tranca();
-    console.log('trancou')
+  while(botao.readSync() == 1){ //botao ativado
+    //console.log('trancou')
     //destranca();
-    //lockerAberto = true;
   }
-  //console.log('trancado')
-  //tranca();
+  
+  tranca();
+  console.log('trancado')
   lockerAberto = false;
   
   //location.href = (path.join(__dirname + '/../public/lockerFechadoGuardar.html'))
@@ -246,13 +242,6 @@ app.get('/buscaDigital', (req, res) =>{
 });
 
 
-app.get('/sensor', (req, res) =>{
-  
-  console.log('Sensor funcionando')
-
-});
-
-
 app.get('/cadastraDigital', (req, res) =>{
   
   console.log('redirecionado pra cadastraDigital')
@@ -272,4 +261,11 @@ app.get('/cadastraDigital', (req, res) =>{
   });
 });
 
+app.get('/sensor', (req, res) =>{
+  
+  console.log('Sensor funcionando')
+  sensor_trava();
+  res.redirect('/guardado');
+  console.log('Redirecionou pra guardado')
 
+});
