@@ -1,5 +1,46 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:700,600,500,400,300,200,100');
 
+/*Animações*/
+.pulse {
+    -webkit-animation-name: pulse;
+    animation-name: pulse;
+    -webkit-animation-duration: 4s;
+    animation-duration: 4s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    }
+    
+    @-webkit-keyframes pulse {
+    0% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+    }
+    50% {
+    -webkit-transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05);
+    }
+    100% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+    }
+    }
+    @keyframes pulse {
+    0% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+    }
+    50% {
+    -webkit-transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05);
+    }
+    100% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+    }
+} 
+
+
+
 body{
     margin: 0;
     font-family: Roboto, sans-serif;
@@ -94,14 +135,18 @@ div.bg-page{
 div.locker-number{
     width: 480px;
     display: flex;
-    justify-content: right;
     position: relative;
+    text-align: right;
 }
 
 p.locker-number{
     font-size: 400px;
     font-weight: 300;
     margin: 0;
+    line-height: 370px;
+    letter-spacing: 0px;
+    margin-left: 10px;
+    text-align: right;
     
 }
 
@@ -186,12 +231,14 @@ div.msg{
 }
 
 p.msg{
-    margin: 22px;
     font-size: 15px;
     width: 480px;
     margin-bottom: 5px; 
     font-weight: 400;
     margin: 0px;
+    margin-left: 20px;
+
+    
 }
 
 div.home-combo-buttons{
