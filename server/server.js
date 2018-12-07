@@ -8,6 +8,9 @@ const path = require('path');
 const PythonShell = require('python-shell');
 const app = express();
 var digitalLida = true; //alterar aqui para evitar ir ao menu sem digital
+const { fork } = require('child_process');
+
+
 
 
 app.use(require('helmet')()); // use helmet
@@ -99,10 +102,20 @@ app.get('/ajuda', (req, res) =>{
 
 app.get('/guardar', (req, res) =>{
   res.sendFile(path.join(__dirname + '/../public/lockerAbertoGuardar.html'))
+  
+	const forked = fork('botao.js');
+  forked.on('message', (msg) => {
+  console.log('Message from child', msg);	/*Where the shit goes crazy*/
+});
+
+forked.send({ hello: 'world' });
+
+
 });
 
 app.get('/guardado', (req, res) =>{
-  res.sendFile(path.join(__dirname + '/../public/lockerFechadoGuardar.html'))
+  console.log('Redirecionou pra guardado') 
+res.sendFile(path.join(__dirname + '/../public/lockerFechadoGuardar.html'))
 });
 
 app.get('/retirar', (req, res) =>{
@@ -177,15 +190,24 @@ app.get('/cadastraDigital', (req, res) =>{
   });
 });
 
-app.get('/sensor', (req, res) =>{
+app.post('/sensor', (req, res) =>{
   
-  console.log('Sensor funcionando')
-  sensor_trava();
-  res.redirect('/guardado');
-  console.log('Redirecionou pra guardado')
+   console.log('Sensor funcionando')
+   
+   //res.redirect('/guardado')
 
 });
 
+/*
+app.post('/sensor', (req, res) =>{
+  console.log('Sensor funcionando')
+  //sensor_trava();
+  res.redirect('www.google.com');
+  //console.log('Redirecionou pra guardado')
+	
+
+});
+*/
 const sensor_trava = function(){ //funcao de travamento/destravamento
 
   tranca();

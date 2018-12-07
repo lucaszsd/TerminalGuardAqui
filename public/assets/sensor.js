@@ -1,7 +1,7 @@
 $('document').ready(() =>{
    
     $.ajax({
-        type: 'GET',
+        type: 'POST',
         url: 'http://localhost:3000/sensor',						
         success: function(data) {
         console.log('success');
