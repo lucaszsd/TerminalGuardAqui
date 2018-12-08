@@ -171,14 +171,26 @@ app.get('/buscaDigital', (req, res) =>{
       console.log('deu undefined');
       res.redirect('/buscaDigital')
     }
+    else if (results[0] == -2){
+      console.log('leitor nao iniciado');
+      res.redirect('/buscaDigital')
+    }
+    else if (results[0] == -1){
+      console.log('nao cadastrada')
+      console.log('redirecionando pra cadastro')
+      res.redirect('/cadastro')   
+    }
     else if (results[1] > 100){
       digitalLida = true;
-      console.log(digitalLida);
+      //console.log(digitalLida);
       console.log('Digital reconhecida');
+      console.log('redirecionando pra menu')
+      res.redirect('/menu') 
     }
     else{
+      console.log('digital nao tem acuracia');
       console.log('redirecionando pra buscaDigital')
-      res.redirect('/buscaDigital')   
+      res.redirect('/buscaDigital')
     }
   });
 
