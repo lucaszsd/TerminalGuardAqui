@@ -8,7 +8,7 @@ const path = require('path');
 const PythonShell = require('python-shell');
 const app = express();
 var digitalLida = true; //alterar aqui para evitar ir ao menu sem digital
-const { fork } = require('child_process').spawnSync;
+const { fork } = require('child_process');
 
 
 
@@ -103,7 +103,7 @@ app.get('/ajuda', (req, res) =>{
 app.get('/guardar', (req, res) =>{
 	res.sendFile(path.join(__dirname + '/../public/lockerAbertoGuardar.html'))
   const forked = fork('botao.js');
-	/*forked.on('message', (msg) => {
+	forked.on('message', (msg) => {
     
     if (msg.foo == 1){
         lockerAberto = true;
@@ -121,15 +121,11 @@ app.get('/guardar', (req, res) =>{
     else{
       console.log('teste de quarda opção - [DESCARTAVEL]')
     }  
-  });*/
+  });
   
-  /*
   forked.on('close', (code, signal) => {
     //console.log( `child process terminated due to receipt of signal ${signal}`);
   });
-  */
-  process.on('exit', function() { 
-    console.log('bye') } )
 });
 
 app.get('/guardado', (req, res) =>{
@@ -185,6 +181,7 @@ app.get('/buscaDigital', (req, res) =>{
       res.redirect('/buscaDigital')   
     }
   });
+
 });
 
 
