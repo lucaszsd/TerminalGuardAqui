@@ -103,8 +103,29 @@ app.get('/ajuda', (req, res) =>{
 app.get('/guardar', (req, res) =>{
 	res.sendFile(path.join(__dirname + '/../public/lockerAbertoGuardar.html'))
   const forked = fork('botao.js');
+	forked.on('message', (msg) => {
+    
+    if (msg.foo == 1){
+        lockerAberto = true;
+        console.log('Aberta');
+    }
+    else if(msg.foo == 2){
+      lockerAberto = false;
+      console.log('Fechada')
+      
+    }
+    else if(msg.foo == 3){
+      console.log('Terminada')
+      
+    }
+    else{
+      console.log('teste de quarda opção - [DESCARTAVEL]')
+    }  
+  });
+  
   forked.on('close', (code, signal) => {
-    console.log( `child process terminated due to receipt of signal ${signal}`);
+    //console.log( `child process terminated due to receipt of signal ${signal}`);
+  });
 });
 
 app.get('/guardado', (req, res) =>{
