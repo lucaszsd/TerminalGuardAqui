@@ -4,39 +4,31 @@ var lockerAberto = false;
 var botao = new Gpio(18, 'in');
 
 const sensor_trava = function(){ //funcao de travamento/destravamento
-  while(true){
-    
-    console.log('iniciou')
-    tranca();
+
+  //process.send('iniciou');
+  tranca();
+  lockerAberto = false;
+  
+  process.send('Porta Fechada');
+  while (botao.readSync() == 0){
     lockerAberto = false;
-    
-    while (botao.readSync() == 0){
-	  
-	  console.log('desativado')
-	  lockerAberto = false;
-    }
-    
-    while (botao.readSync() == 1){
-	    
-	  console.log('ativado')
-	  destranca();
-	  lockerAberto = true;
-    }  
-	  
-    }
+  }
+  
+  process.send('Porta Aberta');
+  while (botao.readSync() == 1){  
+    destranca();
+    lockerAberto = true;
+  }  
+  process.send('Terminou');
+  //console.log('Terminou');
 }
 
-const tranca = function(){ //function to start blinking
-
+const tranca = function(){ 
   flag.writeSync(1); 
- 
 }
 
-const destranca = function(){ //function to start blinking
-
+const destranca = function(){ 
   flag.writeSync(0); 
-  //Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 5000);
-
 }  
 
 sensor_trava();
