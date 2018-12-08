@@ -8,7 +8,7 @@ const path = require('path');
 const PythonShell = require('python-shell');
 const app = express();
 var digitalLida = true; //alterar aqui para evitar ir ao menu sem digital
-const { fork } = require('child_process');
+const { fork } = require('child_process').spawnSync;
 
 
 
@@ -102,8 +102,8 @@ app.get('/ajuda', (req, res) =>{
 
 app.get('/guardar', (req, res) =>{
 	res.sendFile(path.join(__dirname + '/../public/lockerAbertoGuardar.html'))
-const forked = fork('botao.js');
-	forked.on('message', (msg) => {
+  const forked = fork('botao.js');
+	/*forked.on('message', (msg) => {
     
     if (msg.foo == 1){
         lockerAberto = true;
@@ -112,7 +112,7 @@ const forked = fork('botao.js');
     else if(msg.foo == 2){
       lockerAberto = false;
       console.log('Fechada')
-      //res.redirect('/guardado')
+      
     }
     else if(msg.foo == 3){
       console.log('Terminada')
@@ -121,18 +121,20 @@ const forked = fork('botao.js');
     else{
       console.log('teste de quarda opção - [DESCARTAVEL]')
     }  
-  });
+  });*/
   
-  grep.on('close', (code, signal) => {
-    //res.redirect('/guardado')
-    console.log(
-      `child process terminated due to receipt of signal ${signal}`);
+  /*
+  forked.on('close', (code, signal) => {
+    //console.log( `child process terminated due to receipt of signal ${signal}`);
   });
+  */
+  process.on('exit', function() { 
+    console.log('bye') } )
 });
 
 app.get('/guardado', (req, res) =>{
   console.log('Redirecionou pra guardado') 
-res.sendFile(path.join(__dirname + '/../public/lockerFechadoGuardar.html'))
+  res.sendFile(path.join(__dirname + '/../public/lockerFechadoGuardar.html'))
 });
 
 app.get('/retirar', (req, res) =>{
@@ -166,25 +168,23 @@ app.get('/buscaDigital', (req, res) =>{
   
   console.log('redirecionado pra buscaDigital')
   PythonShell.PythonShell.run(path.join(__dirname + '/../public/scripts/digital.py'), null, function (err, results) {
-	console.log('Aguardando digital')
-	console.log(results);
-  
-  if (results == undefined){
-    console.log('deu undefined');
-    res.redirect('/buscaDigital')
-  }
-	else if (results[1] > 100){
-		digitalLida = true;
-		console.log(digitalLida);
-		console.log('Digital reconhecida');
-	}
-  else{
-      console.log('redirecionando pra buscaDigital')
-      res.redirect('/buscaDigital')
-      
-  }
-  });
+    console.log('Aguardando digital')
+    console.log(results);
 
+    if (results == undefined){
+      console.log('deu undefined');
+      res.redirect('/buscaDigital')
+    }
+    else if (results[1] > 100){
+      digitalLida = true;
+      console.log(digitalLida);
+      console.log('Digital reconhecida');
+    }
+    else{
+      console.log('redirecionando pra buscaDigital')
+      res.redirect('/buscaDigital')   
+    }
+  });
 });
 
 
