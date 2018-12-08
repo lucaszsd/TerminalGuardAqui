@@ -102,30 +102,7 @@ app.get('/ajuda', (req, res) =>{
 
 app.get('/guardar', (req, res) =>{
 	res.sendFile(path.join(__dirname + '/../public/lockerAbertoGuardar.html'))
-  const forked = fork('botao.js');
-	forked.on('message', (msg) => {
-    
-    if (msg.foo == 1){
-        lockerAberto = true;
-        console.log('Aberta');
-    }
-    else if(msg.foo == 2){
-      lockerAberto = false;
-      console.log('Fechada')
-      
-    }
-    else if(msg.foo == 3){
-      console.log('Terminada')
-      
-    }
-    else{
-      console.log('teste de quarda opção - [DESCARTAVEL]')
-    }  
-  });
   
-  forked.on('close', (code, signal) => {
-    //console.log( `child process terminated due to receipt of signal ${signal}`);
-  });
 });
 
 app.get('/guardado', (req, res) =>{
@@ -216,24 +193,6 @@ app.get('/cadastraDigital', (req, res) =>{
   });
 });
 
-app.post('/sensor', (req, res) =>{
-  
-   console.log('Sensor funcionando')
-   
-   //res.redirect('/guardado')
-
-});
-
-/*
-app.post('/sensor', (req, res) =>{
-  console.log('Sensor funcionando')
-  //sensor_trava();
-  res.redirect('www.google.com');
-  //console.log('Redirecionou pra guardado')
-	
-
-});
-*/
 const sensor_trava = function(){ //funcao de travamento/destravamento
 
   tranca();
@@ -265,43 +224,3 @@ const destranca = function(){ //function to start blinking
   flag.writeSync(0); 
 }  
 
-/*var aux = null;
-
-
-const digital = function(){
-      aux = null;
-      while (aux == null){
-      
-        PythonShell.PythonShell.run(path.join(__dirname + '/../public/scripts/digital.py'), null, function (err, results) {
-        console.log('Aguardando digital')
-        console.log(results);
-        //if (results[1] > 100){
-        //  digitalLida = true;
-        //  console.log(digitalLida);
-        //  console.log('Digital reconhecida');
-        }
-        aux = results
-      });
-        
-        if(aux != null){
-            if(aux[0] == -1){
-              //Nao cadastrada
-            }else if(aux[0] == -2){
-              //Leitor com erro
-              }else{
-                //Digital reconhecida
-                if(aux[1] < 100){
-                    digital();
-                  }else{
-                    return aux;
-                  }
-              }
-        }
-        
-      }
-      
-      
-    
-  
-}
-*/
