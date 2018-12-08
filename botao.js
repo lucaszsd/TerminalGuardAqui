@@ -9,18 +9,18 @@ const sensor_trava = function(){ //funcao de travamento/destravamento
   tranca();
   lockerAberto = false;
   
-  process.send('Porta Fechada');
+  process.send({ msg: 'Porta Fechada'});
   while (botao.readSync() == 0){
     lockerAberto = false;
   }
   
-  process.send('Porta Aberta');
+  process.send({ msg: 'Porta Aberta'});
   while (botao.readSync() == 1){  
     destranca();
     lockerAberto = true;
   }  
-  process.send('Terminou');
-  //console.log('Terminou');
+  console.log('Terminou');
+  process.send({ msg: 'Terminou'});
 }
 
 const tranca = function(){ 

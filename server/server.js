@@ -106,18 +106,19 @@ app.get('/guardar', (req, res) =>{
 	const forked = fork('botao.js');
   forked.on('message', (msg) => {
   //console.log('Message from child', msg);	/*Where the shit goes crazy*/
-  if (msg == 'Porta Aberta'){
-    lockerAberto = true;
-  }
-  else if(msg == 'Porta Fechada'){
-    lockerAberto = false;
-  }
-  else if(msg == 'Terminou'){
-    res.redirect('/guardado');
-  }
-});
+    if (msg == 'Porta Aberta'){
+      lockerAberto = true;
+    }
+    else if(msg == 'Porta Fechada'){
+      lockerAberto = false;
+    }
+    else if(msg == 'Terminou'){
+      res.redirect('/guardado');
+    }
+  
+  });
 
-forked.send({ hello: 'world' });
+  forked.send({ hello: 'world' });
 
 
 });
