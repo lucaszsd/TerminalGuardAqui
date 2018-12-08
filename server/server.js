@@ -102,7 +102,9 @@ app.get('/ajuda', (req, res) =>{
 
 app.get('/guardar', (req, res) =>{
 	res.sendFile(path.join(__dirname + '/../public/lockerAbertoGuardar.html'))
-  
+  const forked = fork('botao.js');
+  forked.on('close', (code, signal) => {
+    console.log( `child process terminated due to receipt of signal ${signal}`);
 });
 
 app.get('/guardado', (req, res) =>{
