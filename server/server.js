@@ -11,8 +11,6 @@ var digitalLida = true; //alterar aqui para evitar ir ao menu sem digital
 const { fork } = require('child_process');
 
 
-
-
 app.use(require('helmet')()); // use helmet
 app.use(require('cors')()); // enable CORS
 // serves all static files in /public
@@ -101,43 +99,13 @@ app.get('/ajuda', (req, res) =>{
 //==== Menu ========================================================
 
 app.get('/guardar', (req, res) =>{
-	res.sendFile(path.join(__dirname + '/../public/lockerAbertoGuardar.html'))
-  /*const forked = fork('botao.js');
-	forked.on('message', (msg) => {
-    
-    if (msg.foo == 1){
-        lockerAberto = true;
-        console.log('Aberta');
-    }
-    else if(msg.foo == 2){
-      lockerAberto = false;
-      console.log('Fechada')
-      
-    }
-    else if(msg.foo == 3){
-      console.log('Terminada')
-      return res.status(200).send({result: 'redirect', url:'/guardado'})
-      
-    }
-    else{
-      console.log('teste de quarda opção - [DESCARTAVEL]')
-    }  
-  });
-  
-  forked.on('close', (code, signal) => {
-    //console.log( `child process terminated due to receipt of signal ${signal}`);
-  });*/
-  
-  
+	res.sendFile(path.join(__dirname + '/../public/lockerAbertoGuardar.html'))  
 });
 
-app.get('/sensor', (req, res) =>{
-  console.log('chegou em sensor')
+app.get('/sensorGuardar', (req, res) =>{
   sensor_trava();
-  console.log('terminou sensor trava')
   return res.status(200).send({result: 'redirect', url: '/guardado'})
 });
-
 
 app.get('/guardado', (req, res) =>{
   console.log('Redirecionou pra guardado') 
@@ -146,6 +114,11 @@ app.get('/guardado', (req, res) =>{
 
 app.get('/retirar', (req, res) =>{
   res.sendFile(path.join(__dirname + '/../public/lockerAbertoRetirar.html'))
+});
+
+app.get('/sensorRetirar', (req, res) =>{
+  sensor_trava();
+  return res.status(200).send({result: 'redirect', url: '/retirado'})
 });
 
 app.get('/retirado', (req, res) =>{
@@ -180,30 +153,24 @@ app.get('/buscaDigital', (req, res) =>{
 
     if (results == undefined){
       console.log('deu undefined');
-      return res.redirect('/buscaDigital')
+      res.redirect('/buscaDigital')
     }
     else if (results[0] == -2){
       console.log('leitor nao iniciado');
-      return res.redirect('/buscaDigital')
+      res.redirect('/buscaDigital')
     }
     else if (results[0] == -1){
       console.log('nao cadastrada')
-      console.log('redirecionando pra cadastro')
-      return res.status(200).send({result: 'redirect', url:'/concluirCadastro'})
-      //return res.redirect('/concluirCadastro')   
+      return res.status(200).send({result: 'redirect', url:'/concluirCadastro'})  
     }
     else if (results[1] > 100){
       digitalLida = true;
-      //console.log(digitalLida);
       console.log('Digital reconhecida');
-      console.log('redirecionando pra menu')
-      return res.status(200).send({result: 'redirect', url:'/menu'})
-      //return res.redirect('/menu') 
+      return res.status(200).send({result: 'redirect', url:'/menu'}) 
     }
     else{
-      console.log('digital nao tem acuracia');
-      console.log('redirecionando pra buscaDigital')
-      return res.redirect('/buscaDigital')
+      console.log('digital nao tem acuracia'); //talvez mudar html/ajax
+      res.redirect('/buscaDigital')
     }
   });
 
@@ -259,4 +226,3 @@ const destranca = function(){ //function to start blinking
   console.log('destrancado')
   flag.writeSync(0); 
 }  
-
