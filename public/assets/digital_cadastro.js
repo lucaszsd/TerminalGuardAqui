@@ -4,10 +4,11 @@ $('document').ready(() =>{
         type: 'GET',
         url: 'http://localhost:3000/cadastraDigital',						
         success: function(data) {
-        console.log('success');
+        	console.log('sucess')
+            window.location.replace(data.url);
         }
     });
 
-    console.log('leitura de digital');
+    console.log('cadastro de digital');
     
 });

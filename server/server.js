@@ -188,6 +188,8 @@ app.get('/cadastraDigital', (req, res) =>{
     }
     else if (results[0][1] > 100){
 	    digitalLida = true;
+      console.log('digital cadastrada');
+      return res.status(200).send({result: 'redirect', url:'/home'}) 
     }
     else{
         console.log('redirecionando pra cadastraDigital')
@@ -214,7 +216,6 @@ const sensor_trava = function(){ //funcao de travamento/destravamento
   console.log('trancado')
   lockerAberto = false;
   
-  //location.href = (path.join(__dirname + '/../public/lockerFechadoGuardar.html'))
 }
 
 const tranca = function(){ //function to start blinking
@@ -226,3 +227,5 @@ const destranca = function(){ //function to start blinking
   console.log('destrancado')
   flag.writeSync(0); 
 }  
+
+//location.href = (path.join(__dirname + '/../public/lockerFechadoGuardar.html'))
