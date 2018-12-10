@@ -22,9 +22,9 @@ $('document').ready(() =>{
         window.location = "/menu";
     });
 
-    $('#btn-home-concluir-cadastro').click(function(){
+    /*$('#btn-home-concluir-cadastro').click(function(){
         window.location = "/concluirCadastro";
-    });
+    });*/
 
     $('#btn-home-instrucoes-do-cadastro').click(function(){
         window.location = "/instrucoesCadastro";
@@ -49,7 +49,7 @@ $('document').ready(() =>{
     
      
     $('#btn-concluirCadastro-continuar').click(function(){
-        window.location = "/digital";
+        window.location = "/menu";
     });
 
     $('#btn-concluirCadastro-voltar').click(function(){

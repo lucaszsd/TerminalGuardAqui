@@ -7,7 +7,7 @@ const express = require('express');
 const path = require('path');
 const PythonShell = require('python-shell');
 const app = express();
-var digitalLida = true; //alterar aqui para evitar ir ao menu sem digital
+var digitalLida = false; //alterar aqui para evitar ir ao menu sem digital
 const { fork } = require('child_process');
 
 
@@ -147,7 +147,7 @@ app.get('/digital', (req, res) =>{
 app.get('/buscaDigital', (req, res) =>{
   
   console.log('redirecionado pra buscaDigital')
-  PythonShell.PythonShell.run(path.join(__dirname + '/../public/scripts/digital.py'), null, function (err, results) {
+  PythonShell.PythonShell.run(path.join(__dirname + '/../public/scripts/cadastro_identificacao.py'), null, function (err, results) {
     console.log('Aguardando digital')
     console.log(results);
 
@@ -160,23 +160,24 @@ app.get('/buscaDigital', (req, res) =>{
       res.redirect('/buscaDigital')
     }
     else if (results[0] == -1){
-      console.log('nao cadastrada')
+      console.log('nao estava cadastrada')
+	  digitalLida = true;
       return res.status(200).send({result: 'redirect', url:'/concluirCadastro'})  
     }
-    else if (results[1] > 100){
+    else if (results[1] == 0){
       digitalLida = true;
       console.log('Digital reconhecida');
       return res.status(200).send({result: 'redirect', url:'/menu'}) 
     }
-    else{
+    /*else{
       console.log('digital nao tem acuracia'); //talvez mudar html/ajax
       res.redirect('/buscaDigital')
-    }
+    }*/
   });
 
 });
 
-
+/*
 app.get('/cadastraDigital', (req, res) =>{
   
   console.log('redirecionado pra cadastraDigital')
@@ -196,7 +197,7 @@ app.get('/cadastraDigital', (req, res) =>{
         res.redirect('/cadastraDigital')
     }
   });
-});
+});*/
 
 const sensor_trava = function(){ //funcao de travamento/destravamento
 
@@ -207,9 +208,12 @@ const sensor_trava = function(){ //funcao de travamento/destravamento
   }
   
   destranca();
+  
+  Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 4000);
+  
   console.log('destrancado')
 
-  while(botao.readSync() == 1){ //botao ativado
+  while(botao.readSync() == 0){ //botao desativado
   }
   
   tranca();
