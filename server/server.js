@@ -11,6 +11,9 @@ var digitalLida = false; //alterar aqui para evitar ir ao menu sem digital
 const { fork } = require('child_process');
 
 
+var LocalStorage = require('node-localstorage').LocalStorage,
+localStorage = new LocalStorage('./scratch');
+
 app.use(require('helmet')()); // use helmet
 app.use(require('cors')()); // enable CORS
 // serves all static files in /public
@@ -21,7 +24,7 @@ const server = require('http').Server(app);
 
 var Gpio = require('onoff').Gpio; 
 var flag = new Gpio(4, 'out'); //GPIO saida pro relé
-var botao = new Gpio(18, 'in');
+var botao = new Gpio(23, 'in');
 var lockerAberto = false;
 
 
@@ -59,13 +62,13 @@ app.post('/api/users', jsonParser, (req, res) => {
 
 
 
-//var lockersOcupados = {};
 
-
+localStorage.setItem("ocupacao", "false")
+/*
 // Representa o usuário
 function usuario(){
   this.ocupandoLocker = false;
-  localStorage.setItem("ocupacao", "false")
+  
 
 	this.ocupaLocker = function(){		
     this.ocupandoLocker = true;
@@ -76,8 +79,9 @@ function usuario(){
     localStorage.setItem("ocupacao", "false")
 	}
 }
-
 var user = new usuario();
+
+*/
 //localStorage.getItem("nomeDeUsuario")
 //------------------------
 
@@ -129,7 +133,7 @@ app.get('/sensorGuardar', (req, res) =>{
 });
 
 app.get('/guardado', (req, res) =>{
-  user.ocupaLocker();
+localStorage.setItem("ocupacao", "true")
   console.log('Redirecionou pra guardado') 
   res.sendFile(path.join(__dirname + '/../public/lockerFechadoGuardar.html'))
 
@@ -145,7 +149,7 @@ app.get('/sensorRetirar', (req, res) =>{
 });
 
 app.get('/retirado', (req, res) =>{
-  user.desocupaLocker();
+localStorage.setItem("ocupacao", "false")
   res.sendFile(path.join(__dirname + '/../public/lockerFechadoRetirar.html'))
 });
 
