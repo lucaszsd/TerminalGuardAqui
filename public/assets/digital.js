@@ -2,10 +2,11 @@ $('document').ready(() =>{
    
 
       $.ajax({
-           type: 'POST',
+           type: 'GET',
             url: 'http://localhost:3000/buscaDigital',						      
             success: function(data) {
-               
+            	console.log('sucess')
+                window.location.replace(data.url);
             }
         });
   
@@ -13,3 +14,8 @@ $('document').ready(() =>{
     console.log('leitura digital');
     
 });
+
+//if (data.result == 'redirect'){
+//  console.log('redirecionado')
+                   
+//}

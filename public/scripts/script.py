@@ -1,27 +1,60 @@
-# script.py
+## Script da tela de usuario cadastrado
+## Link sobre comunicacao python nodejs: https://stackoverflow.com/questions/23450534/how-to-call-a-python-function-from-node-js
 
-import sys
+## Estrutura do retorno: [(flag, positionNumber,accuracyScore)]
 
-my_name = 'Carlos'
-my_age = 18 # not a lie
-my_height = 172 # cm
-my_weight = 71 # kg
-my_eyes = 'Brown'
-my_teeth = 'White'
-my_hair = 'Black'
+## Imports
+import hashlib, sys
+from pyfingerprint.pyfingerprint import PyFingerprint
 
-print ("Let's talk about %s." % my_name)
-sys.stdout.flush()
-print ("He's %d centimeters tall." % my_height)
-sys.stdout.flush()
-print ("He's %d kilograms heavy." % my_weight)
-sys.stdout.flush()
-print ("Actually that's not too heavy.")
-sys.stdout.flush()
-print ("He's got %s eyes and %s hair." % (my_eyes, my_hair))
-sys.stdout.flush()
-print ("His teeth are usually %s depending on the coffee." % my_teeth)
-sys.stdout.flush()
-# this line is tricky, try to get it exactly right
-print ("If I add %d, %d, and %d I get %d. I don't know what that means but, whatever." % (my_age, my_height, my_weight, my_age + my_height + my_weight))
-sys.stdout.flush()
+## Tenta inicializar o sensor
+f = PyFingerprint('/dev/ttyUSB0', 57600, 0xFFFFFFFF, 0x00000000)
+if ( f.verifyPassword() == False ): ## Se nao conseguiu inicializar, flag de inicializacao = -2
+	print(-2)
+	sys.stdout.flush()
+	print(-2)
+	sys.stdout.flush()
+	print(-2)
+	sys.stdout.flush()
+	
+else:						## Se conseguiu inicializar
+	## Esperar leitura
+	while ( f.readImage() == False ):
+		pass
+
+	## Converter a imagem recebida para atributos e armazenar em charbuffer1
+	f.convertImage(0x01)
+	## Procurar por template 
+	result = f.searchTemplate() 
+	positionNumber = result[0]
+
+	## Digital nao cadastrada
+	if ( positionNumber == -1 ): 
+		
+		## Enviar mensagem de nao encontrada pro node
+		print(-1)
+		sys.stdout.flush()
+		print(-1)
+		sys.stdout.flush()
+		
+	## Digital cadastrada
+	else: 
+		
+		## Carregar o template em charbuffer 1
+		f.loadTemplate(positionNumber, 0x01) 
+		
+		## Receber os atributos do template do charbuffer 1
+		characterics = str(f.downloadCharacteristics(0x01)).encode('utf-8') 
+		
+		## Atributos do hash do template
+		sha2 = hashlib.sha256(characterics).hexdigest() 
+		
+		## Enviar resultado pro node
+		print(result[0])
+		sys.stdout.flush()
+		print(result[1])
+		sys.stdout.flush()
+		
+		## Enviar chave sha-2 do template para o node
+		#print(sha2)
+		#sys.stdout.flush()

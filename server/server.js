@@ -7,7 +7,8 @@ const express = require('express');
 const path = require('path');
 const PythonShell = require('python-shell');
 const app = express();
-var digitalLida = false;
+var digitalLida = false; //alterar aqui para evitar ir ao menu sem digital
+const { fork } = require('child_process');
 
 
 app.use(require('helmet')()); // use helmet
@@ -17,6 +18,13 @@ app.use(express.static(`${__dirname}/../public`));
 const port = process.env.PORT || 3000;
 const server = require('http').Server(app);
 
+
+var Gpio = require('onoff').Gpio; 
+var flag = new Gpio(4, 'out'); //GPIO saida pro relé
+var botao = new Gpio(18, 'in');
+var lockerAberto = false;
+
+
 // boilerplate version
 const version = `Express-Boilerplate v${require('../package.json').version}`;
 
@@ -24,6 +32,8 @@ const version = `Express-Boilerplate v${require('../package.json').version}`;
 server.listen(port, () => {
   log.info(version);
   log.info(`Listening on port ${port}`);
+  //tranca();
+  lockerAberto = false;
 });
 
 // 'body-parser' middleware for POST
@@ -46,9 +56,6 @@ app.post('/api/users', jsonParser, (req, res) => {
   if (!req.body) return res.sendStatus(400);
   // create user in req.body
 });
-
-
-
 
 
 //------------------------
@@ -92,10 +99,16 @@ app.get('/ajuda', (req, res) =>{
 //==== Menu ========================================================
 
 app.get('/guardar', (req, res) =>{
-  res.sendFile(path.join(__dirname + '/../public/lockerAbertoGuardar.html'))
+	res.sendFile(path.join(__dirname + '/../public/lockerAbertoGuardar.html'))  
+});
+
+app.get('/sensorGuardar', (req, res) =>{
+  sensor_trava();
+  return res.status(200).send({result: 'redirect', url: '/guardado'})
 });
 
 app.get('/guardado', (req, res) =>{
+  console.log('Redirecionou pra guardado') 
   res.sendFile(path.join(__dirname + '/../public/lockerFechadoGuardar.html'))
 });
 
@@ -103,20 +116,23 @@ app.get('/retirar', (req, res) =>{
   res.sendFile(path.join(__dirname + '/../public/lockerAbertoRetirar.html'))
 });
 
+app.get('/sensorRetirar', (req, res) =>{
+  sensor_trava();
+  return res.status(200).send({result: 'redirect', url: '/retirado'})
+});
+
 app.get('/retirado', (req, res) =>{
   res.sendFile(path.join(__dirname + '/../public/lockerFechadoRetirar.html'))
-
 });
 
 app.get('/sair', (req, res) =>{
   res.sendFile(path.join(__dirname + '/../public/home.html'))
 });
 
-app.get('/logoff', (req, res) =>{ 
+app.get('/logoff', (req, res) =>{
   Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 5000);
   res.sendFile(path.join(__dirname + '/../public/home.html'))
 });
-
 
 app.get('/suporte', (req, res) =>{
   res.sendFile(path.join(__dirname + '/../public/suporte.html'))
@@ -126,34 +142,94 @@ app.get('/digital', (req, res) =>{
   res.sendFile(path.join(__dirname + '/../public/concluindoCadastro.html'))
 });
 
-
-
-
 //-------------------------------
 
-app.post('/buscaDigital', (req, res) =>{
-/*
-  PythonShell.PythonShell.run(path.join(__dirname + '/../public/scripts/digital.py'), null, function (err, results) {
-    if (err) throw err;
-    if (results[0][1] > 100){
-	  digitalLida = true;
-    console.log('Digital reconhecida');
-   }
-	console.log(results);
-
-  });
-*/
-});
-
-
-app.post('/cadastraDigital', (req, res) =>{
+app.get('/buscaDigital', (req, res) =>{
   
-  PythonShell.PythonShell.run(path.join(__dirname + '/../public/scripts/digital_cadastro.py'), null, function (err, results) {
-    if (err) throw err;
-    if (results[0][1] > 100){
-	    digitalLida = true;
+  console.log('redirecionado pra buscaDigital')
+  PythonShell.PythonShell.run(path.join(__dirname + '/../public/scripts/cadastro_identificacao.py'), null, function (err, results) {
+    console.log('Aguardando digital')
+    console.log(results);
+
+    if (results == undefined){
+      console.log('deu undefined');
+      res.redirect('/buscaDigital')
     }
-	console.log(results)
+    else if (results[0] == -2){
+      console.log('leitor nao iniciado');
+      res.redirect('/buscaDigital')
+    }
+    else if (results[0] == -1){
+      console.log('nao estava cadastrada')
+	  digitalLida = true;
+      return res.status(200).send({result: 'redirect', url:'/concluirCadastro'})  
+    }
+    else if (results[1] == 0){
+      digitalLida = true;
+      console.log('Digital reconhecida');
+      return res.status(200).send({result: 'redirect', url:'/menu'}) 
+    }
+    /*else{
+      console.log('digital nao tem acuracia'); //talvez mudar html/ajax
+      res.redirect('/buscaDigital')
+    }*/
   });
 
 });
+
+/*
+app.get('/cadastraDigital', (req, res) =>{
+  
+  console.log('redirecionado pra cadastraDigital')
+
+  PythonShell.PythonShell.run(path.join(__dirname + '/../public/scripts/digital_cadastro.py'), null, function (err, results) {
+    if (results == undefined){
+        console.log('deu undefined');
+        res.redirect('/cadastraDigital')
+    }
+    else if (results[0][1] > 100){
+	    digitalLida = true;
+      console.log('digital cadastrada');
+      return res.status(200).send({result: 'redirect', url:'/home'}) 
+    }
+    else{
+        console.log('redirecionando pra cadastraDigital')
+        res.redirect('/cadastraDigital')
+    }
+  });
+});*/
+
+const sensor_trava = function(){ //funcao de travamento/destravamento
+
+  tranca();
+  console.log('trancado')
+  
+  while (botao.readSync() == 0){ //botao desativado
+  }
+  
+  destranca();
+  
+  Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 4000);
+  
+  console.log('destrancado')
+
+  while(botao.readSync() == 0){ //botao desativado
+  }
+  
+  tranca();
+  console.log('trancado')
+  lockerAberto = false;
+  
+}
+
+const tranca = function(){ //function to start blinking
+
+  flag.writeSync(1); 
+}
+
+const destranca = function(){ //function to start blinking
+  console.log('destrancado')
+  flag.writeSync(0); 
+}  
+
+//location.href = (path.join(__dirname + '/../public/lockerFechadoGuardar.html'))

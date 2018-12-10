@@ -17,18 +17,14 @@ $('document').ready(() =>{
         window.location = "/home";
     });
 
-    $('.GuardAqui').click(function(){
-        window.location = "/home";
-    });
-
     //========= Home ===========================
     $('#card-home-identifique').click(function(){
         window.location = "/menu";
     });
 
-    $('#btn-home-concluir-cadastro').click(function(){
+    /*$('#btn-home-concluir-cadastro').click(function(){
         window.location = "/concluirCadastro";
-    });
+    });*/
 
     $('#btn-home-instrucoes-do-cadastro').click(function(){
         window.location = "/instrucoesCadastro";
@@ -53,7 +49,7 @@ $('document').ready(() =>{
     
      
     $('#btn-concluirCadastro-continuar').click(function(){
-        window.location = "/digital";
+        window.location = "/menu";
     });
 
     $('#btn-concluirCadastro-voltar').click(function(){
@@ -73,11 +69,11 @@ $('document').ready(() =>{
     //========= Menu ===========================
     
     $('#btn-menu-guardar').click(function(){
-        window.location = "/guardado";
+        window.location = "/guardar";
     });
     
     $('#btn-menu-retirar').click(function(){
-        window.location = "/retirado";
+        window.location = "/retirar";
     });
 
     $('#btn-menu-sair').click(function(){
@@ -104,13 +100,13 @@ $('document').ready(() =>{
 
       //========= lockerAbertoGuardar ===========================
       $('#btn-footer-guardar').click(function(){
-        window.location = "/logoff";
+        window.location = "/guardado";
     });
 
 
      //========= lockerAbertoGuardado ===========================
      $('#btn-footer-retirar').click(function(){
-        window.location = "/logoff";
+        window.location = "/retirado";
     });
 
 });
