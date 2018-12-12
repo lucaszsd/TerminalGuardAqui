@@ -40,7 +40,6 @@ $('document').ready(() =>{
         window.location = "/ajuda";
     });
 
-
     //========= lockerAberto ===========================
     
     $('#btn-footer-lockerAberto').click(function(){
@@ -70,11 +69,11 @@ $('document').ready(() =>{
 
     //========= Menu ===========================
     
-    $('#btn-menu-guardar').click(function(){
+    $('#btn-menu-guardar-confirmar').click(function(){ //era btn-menu-guardar
         window.location = "/guardar";
     });
     
-    $('#btn-menu-retirar').click(function(){
+    $('#btn-menu-retirar-confirmar').click(function(){ //era btn-menu-guardar
         window.location = "/retirar";
     });
 

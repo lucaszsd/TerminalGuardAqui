@@ -41,6 +41,9 @@
     }
 }
 
+button.btn-cancel{
+    background-color: var(--cinza);
+}
 
 .fadeOut {
     -webkit-animation-name: fadeOut;

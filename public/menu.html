@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Menu</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="assets/style.css" />
-
+    <link rel="stylesheet" href="assets/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/style.css" >
 </head>
 <body>
    <main id = "menu">
@@ -20,14 +20,61 @@
                 <H2 class = "sub-title">O que você deseja?</H2>
             </div>
             <div class = "combo-buttons">
-                    <button id = "btn-menu-guardar" class = "btn btn-menu btn-yellow">GUARDAR</button>
-                    <button id = "btn-menu-retirar" class = "btn btn-menu btn-yellow">RETIRAR</button>
+                    <button id = "btn-menu-guardar" data-toggle="modal" data-target="#modal-guardar" class = "btn btn-menu btn-yellow">GUARDAR</button>
+                    <button id = "btn-menu-retirar" data-toggle="modal" data-target="#modal-retirar" class = "btn btn-menu btn-yellow">RETIRAR</button>
                     <button id = "btn-menu-sair" class = "btn btn-menu btn-yellow">SAIR</button>
                     <button id = "btn-menu-suporte" class = "btn btn-menu btn-yellow">SUPORTE</button>
             </div>
        </section>
    </main>
+
+
+   <!-- Modal Retirar-->
+  <div class="modal fade" id="modal-guardar" tabindex="-1" role="dialog" aria-labelledby="Modal-Guardar" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Requisitar locker</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Você deseja mesmo requisitar um locker?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-aux btn-form btn-cancel" data-dismiss="modal">Cancelar</button>
+          <button id = "btn-menu-guardar-confirmar" type="button" class="btn btn-aux btn-form">Requisitar Locker</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   <!-- Modal Retirar-->
+   <div class="modal fade" id="modal-retirar" tabindex="-1" role="dialog" aria-labelledby="Modal-Retirar" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Requisitar locker</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Você deseja mesmo retirar pertences o locker?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-aux btn-form btn-cancel" data-dismiss="modal">Cancelar</button>
+          <button id = "btn-menu-retirar-confirmar" type="button" class="btn btn-aux btn-form">Requisitar Locker</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </body>
 <script src = "https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="assets/functions.js"></script>
-</html>
+<script src = "assets/functions.js"></script>
+<script src = "assets/popper.min.js"></script>
+<script src = "assets/bootstrap.min.js"></script>
+    
+    </html>
