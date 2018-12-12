@@ -58,6 +58,27 @@ app.post('/api/users', jsonParser, (req, res) => {
 });
 
 
+
+var lockersOcupados = {};
+
+
+// Representa o usuário
+function usuario(){
+  this.ocupandoLocker = false;
+  localStorage.setItem("ocupacao", "false")
+
+	this.ocupaLocker = function(){		
+    this.ocupandoLocker = true;
+    localStorage.setItem("ocupacao", "true")
+	}
+  this.desocupaLocker = function(){		
+    this.ocupandoLocker = false;
+    localStorage.setItem("ocupacao", "false")
+	}
+}
+
+var user = new usuario();
+//localStorage.getItem("nomeDeUsuario")
 //------------------------
 
 app.get('/home', (req, res) =>{
