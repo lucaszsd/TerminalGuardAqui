@@ -18,13 +18,15 @@ $('document').ready(() =>{
     });
 
     //========= Home ===========================
+   
+    /*
     $('#card-home-identifique').click(function(){
         window.location = "/menu";
     });
-
-    /*$('#btn-home-concluir-cadastro').click(function(){
+    */
+    $('#btn-home-concluir-cadastro').click(function(){
         window.location = "/concluirCadastro";
-    });*/
+    });
 
     $('#btn-home-instrucoes-do-cadastro').click(function(){
         window.location = "/instrucoesCadastro";
@@ -49,7 +51,7 @@ $('document').ready(() =>{
     
      
     $('#btn-concluirCadastro-continuar').click(function(){
-        window.location = "/menu";
+        window.location = "/digital";
     });
 
     $('#btn-concluirCadastro-voltar').click(function(){
@@ -108,5 +110,26 @@ $('document').ready(() =>{
      $('#btn-footer-retirar').click(function(){
         window.location = "/retirado";
     });
+
+    
+
+    
+     //========= Instruções ===========================
+     $('#btn-instrucoes-voltar').click(function(){
+        window.location = "/home";
+    });
+
+    $('#btn-instrucoes-concluir-cadastro').click(function(){
+        window.location = "/concluirCadastro";
+    });
+
+
+     //========= Sobre ===========================
+     $('#btn-saibamais-voltar').click(function(){
+        window.location = "/home";
+    });
+
+    
+
 
 });

@@ -8,6 +8,8 @@
     animation-duration: 4s;
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
+    -webkit-animation-interation-count: infinite;
+    animation-iteration-count: infinite;
     }
     
     @-webkit-keyframes pulse {
@@ -37,7 +39,199 @@
     -webkit-transform: scale3d(1, 1, 1);
     transform: scale3d(1, 1, 1);
     }
-} 
+}
+
+
+.fadeOut {
+    -webkit-animation-name: fadeOut;
+    animation-name: fadeOut;
+    -webkit-animation-duration: 3s;
+    animation-duration: 3s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-interation-count: infinite;
+    animation-iteration-count: infinite;
+
+    }
+    
+
+    @-webkit-keyframes fadeOut {
+        0% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.7;
+        }
+        100% {
+            opacity: 0;
+        }
+      }
+      
+      @keyframes fadeOut {
+        0% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.7;
+        }
+        100% {
+            opacity: 0;
+        }
+      }
+      
+
+
+
+      .atention {
+        -webkit-animation-name: atention;
+        animation-name: atention;
+        -webkit-animation-duration: 2s;
+        animation-duration: 2s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+        -webkit-animation-interation-count: infinite;
+        animation-iteration-count: infinite;
+    
+        }
+        
+    
+        @-webkit-keyframes atention {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+          }
+          
+          @keyframes atention {
+            0% {
+                opacity: 1;
+            }
+          
+            100% {
+                opacity: 0;
+            }
+          }
+          
+     
+
+
+/*
+==================================================
+
+*/
+
+div.ask{
+    display: flex;
+    flex-direction: column;
+    width: 480px;
+
+}
+p.ask{
+    padding: 20px;
+    
+    margin: 5px;
+}
+
+div#ajuda-perguntas{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+div.ajuda{
+    width: 480px;
+    display: flex;
+    justify-items: center;
+    flex-direction: column;
+}
+ 
+button#btn-ajuda-voltar-gambi{
+    margin-left: 120px;
+    margin-top: 20px;
+    margin-right: 120px;
+}
+
+div.passo{
+   width: 220px;
+   height: 200px;
+   border-radius: 20px; 
+   text-align: center;
+
+    background-repeat: no-repeat;
+    background-image: url('images/passobg.png');
+    background-size: cover;
+}
+
+div.passo-img{
+    width: 220px;
+    height: 200px;
+    border-radius: 20px; 
+    text-align: center;
+ 
+     background-repeat: no-repeat;
+     background-image: url('images/passobg.png');
+     background-size: cover;
+ 
+    
+     opacity:0.65;
+     -moz-opacity: 0.65;
+     filter: alpha(opacity=65);
+}
+
+div.passo-row{
+    display: flex;
+    justify-content: space-around;
+}
+
+
+div.passo-column{
+    display: flex;
+    height: 420px;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+button#btn-home-instrucoes-do-cadastro{
+    height: 70px;
+}
+
+div#combo-instrucoes{
+   margin-top: 25px;
+}
+
+
+h4.passo{
+    font-size: 25px;
+    margin: 10px;
+    margin-top: 50px;
+    opacity: 1;
+	-moz-opacity: 1;
+    filter: alpha(opacity=100);
+}
+
+/*
+div#home{
+    background-repeat: no-repeat;
+    background-image: url('images/background.png');
+    background-size: cover;
+    height: 800px;
+    width: 480px;
+    position: absolute;
+    z-index: -1;
+}
+*/
+
+
+
+
+/*
+==================================================
+
+*/
+
 
 
 
@@ -49,7 +243,8 @@ body{
     --blue: #0083B1; 
     --cinza: #666666;
     --cinza-claro: #E6E6E6;
-    background-color: black
+    background-color: black;
+    overflow: hidden;
 }
 
 main{
@@ -76,15 +271,17 @@ main#concluirCadastro{
     background-color: white;
 }
 
+img.digital{
+    height: 440px;
+}
 
 div.bg-page{
     background-repeat: no-repeat;
-    
-    background-image: url('images/background3.png');
+    background-image: url('images/background.png');
     background-size: cover;
     height: 800px;
     width: 480px;
-    filter: blur(8px);
+    /*filter: blur(8px);*/
     position: absolute;
     z-index: -1;
 }
@@ -155,14 +352,9 @@ p.blue{
 }
 
 
-p.yellow{
-    color: var(--yellow);
-}
 
 
-p.yellow-claro{
-    color: var(--yellow-claro);
-}
+
 
 
 
@@ -172,17 +364,18 @@ p.light-grey{
 
 p.concluido{
     margin: 22px;
-    font-size: 75px;
+    font-size: 74px;
     margin-bottom: 5px; 
     font-weight: 300;
-    margin: 0px;
+    margin: 10px;
+    margin-top: 0px;
 }
 
 div.concluido{
     width: 480px;
-    justify-content: right;
+    justify-content: left;
     display: flex;
-    padding-left: 20px;
+    /*padding-left: 20px;*/
     margin-left: 20px;
     margin-top: 10px;
 }
@@ -192,7 +385,7 @@ div.concluido{
 p.name{
     margin: 20px;
     font-size: 20px;
-    color: var(--cinza-claro);
+    color: var(--blue);
     width: 480px;
     margin-bottom: 5px; 
     font-weight: 400;
@@ -370,18 +563,20 @@ p.italic{
 }
 
 div.sub-title{
-    margin: 10px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    margin-left: 40px;
+    margin-left: 10px;
+    padding-right: 10px;
+    width: 440px;
+
 }
 
 p.sub-title{
     margin: 20px;
     font-size: 20px;
     color: var(--cinza);
-    width: 480px;
+
     margin-bottom: 5px;
     margin-left: 20px;
 }
@@ -398,13 +593,20 @@ div.button-left{
 }
 
 h2.sub-title{
-    font-size: 45px;
+    font-size: 38px;
     font-weight: 400;
     margin: 20px;
     margin-top: 0px;
-    margin-left: 20px;
+  
 }
 
+h2.sub-title-concluir{
+    font-size: 40px;
+    font-weight: 400;
+    margin: 20px;
+    margin-top: 0px;
+
+}
 
 .input-form{
     height: 70px;
@@ -418,12 +620,18 @@ h2.sub-title{
     padding-left: 15px;
 }
 
+form{
+    width: 440px;
+}
+
 fieldset{
     display: flex;
     justify-content: center;
-    width: 480px;
+    width: 440px;
     padding: 0px;
     border: none;
+    flex-wrap: wrap;
+    flex-direction: column;
 }
 
 .btn-round{
@@ -453,22 +661,63 @@ div.back{
     align-items: center;
     width: 480px;
     height: 110px ;
-  
+    
     bottom: 0px;
 }
-
-
 
 div.content{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    width: 480px;
 }
 
 a{
     text-decoration: none;
     color: white;
+}
+
+p.yellow{
+    color: var(--yellow);
 
 }
 
+p.yellow-claro{
+    color: var(--yellow-claro);
+}
+
+
+div.sobre{
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-left: 40px;
+    width: 480px;
+}
+
+
+h2.sobre{
+    
+    font-size: 38px;
+    font-weight: 700;
+    margin: 10px;
+    margin-top: 0px;
+    margin-top:40px;
+}
+
+
+button#btn-saibamais-voltar{
+    margin-top: 140px;
+}
+
+span{
+    color: var(--yellow)
+}
+
+
+button#btn-instrucoes-voltar{
+
+    height: 70px;
+}
