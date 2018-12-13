@@ -14,6 +14,8 @@ if ( f.verifyPassword() == False ): ## Se nao conseguiu inicializar, flag de ini
 	sys.stdout.flush()
 	print(-2)
 	sys.stdout.flush()
+	print(-2)
+	sys.stdout.flush()
 	
 else:						## Se conseguiu inicializar
 	## Esperar leitura
@@ -29,10 +31,20 @@ else:						## Se conseguiu inicializar
 	## Digital nao cadastrada
 	if ( positionNumber == -1 ): 
 		
-		## Enviar mensagem de nao encontrada pro node
+		## Cria novo template
+		f.createTemplate()
+
+		## Salva template em novo lugar do array de templates
+		positionNumber = f.storeTemplate()
+		
+		## Envia mensagem de cadastro concluido pro node
+		result = f.searchTemplate()
+
 		print(-1)
 		sys.stdout.flush()
-		print(-1)
+		print(result[0])
+		sys.stdout.flush()
+		print(result[1])
 		sys.stdout.flush()
 		
 	## Digital cadastrada
@@ -48,6 +60,8 @@ else:						## Se conseguiu inicializar
 		sha2 = hashlib.sha256(characterics).hexdigest() 
 		
 		## Enviar resultado pro node
+		print(0)
+		sys.stdout.flush()
 		print(result[0])
 		sys.stdout.flush()
 		print(result[1])

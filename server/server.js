@@ -32,7 +32,7 @@ const version = `Express-Boilerplate v${require('../package.json').version}`;
 server.listen(port, () => {
   log.info(version);
   log.info(`Listening on port ${port}`);
-  //tranca();
+  tranca();
   lockerAberto = false;
 });
 
@@ -171,7 +171,7 @@ app.get('/digital', (req, res) =>{
 app.get('/buscaDigital', (req, res) =>{
   
   console.log('redirecionado pra buscaDigital')
-  PythonShell.PythonShell.run(path.join(__dirname + '/../public/scripts/cadastro_identificacao.py'), null, function (err, results) {
+  PythonShell.PythonShell.run(path.join(__dirname + '/../public/scripts/digital.py'), null, function (err, results) {
     console.log('Aguardando digital')
     console.log(results);
 
@@ -185,43 +185,21 @@ app.get('/buscaDigital', (req, res) =>{
     }
     else if (results[0] == -1){
       console.log('nao estava cadastrada')
-	  digitalLida = true;
+      digitalLida = true;
       return res.status(200).send({result: 'redirect', url:'/concluirCadastro'})  
     }
-    else if (results[1] == 0){
+    else if ((results[0] == 0) && (results[2] > 100)){
       digitalLida = true;
       console.log('Digital reconhecida');
       return res.status(200).send({result: 'redirect', url:'/menu'}) 
     }
-    /*else{
+    else{
       console.log('digital nao tem acuracia'); //talvez mudar html/ajax
       res.redirect('/buscaDigital')
-    }*/
+    }
   });
 
 });
-
-/*
-app.get('/cadastraDigital', (req, res) =>{
-  
-  console.log('redirecionado pra cadastraDigital')
-
-  PythonShell.PythonShell.run(path.join(__dirname + '/../public/scripts/digital_cadastro.py'), null, function (err, results) {
-    if (results == undefined){
-        console.log('deu undefined');
-        res.redirect('/cadastraDigital')
-    }
-    else if (results[0][1] > 100){
-	    digitalLida = true;
-      console.log('digital cadastrada');
-      return res.status(200).send({result: 'redirect', url:'/home'}) 
-    }
-    else{
-        console.log('redirecionando pra cadastraDigital')
-        res.redirect('/cadastraDigital')
-    }
-  });
-});*/
 
 const sensor_trava = function(){ //funcao de travamento/destravamento
 
