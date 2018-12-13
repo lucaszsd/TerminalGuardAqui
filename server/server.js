@@ -59,7 +59,7 @@ app.post('/api/users', jsonParser, (req, res) => {
 
 
 
-var lockersOcupados = {};
+//var lockersOcupados = {};
 
 
 // Representa o usuário
@@ -129,8 +129,10 @@ app.get('/sensorGuardar', (req, res) =>{
 });
 
 app.get('/guardado', (req, res) =>{
+  user.ocupaLocker();
   console.log('Redirecionou pra guardado') 
   res.sendFile(path.join(__dirname + '/../public/lockerFechadoGuardar.html'))
+
 });
 
 app.get('/retirar', (req, res) =>{
@@ -143,6 +145,7 @@ app.get('/sensorRetirar', (req, res) =>{
 });
 
 app.get('/retirado', (req, res) =>{
+  user.desocupaLocker();
   res.sendFile(path.join(__dirname + '/../public/lockerFechadoRetirar.html'))
 });
 
